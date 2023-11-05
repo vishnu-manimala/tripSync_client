@@ -46,8 +46,7 @@ passwordMatchValidator(group:FormGroup){
 }
 
   registerSubmit() {
-    console.log("gkjhh",this.registerForm.value)
-    console.log("gkjhh",this.registerForm.valid)
+    console.log("Register form",this.registerForm.value)
     if (this.registerForm.valid) {
       if (!this.passwordMatchValidator(this.registerForm)) {
         this.registerSubscription = this._authService.registerUser(this.registerForm.value).subscribe(

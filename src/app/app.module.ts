@@ -8,7 +8,8 @@ import { AdminComponent } from './layouts/admin/admin.component';
 import { UserComponent } from './layouts/user/user.component';
 import { AuthComponent } from './layouts/auth/auth.component';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { OtpComponent } from './views/sharedComponents/otp/otp.component';
+import { ToastrModule } from 'ngx-toastr';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +17,7 @@ import { OtpComponent } from './views/sharedComponents/otp/otp.component';
     AdminComponent,
     UserComponent,
     AuthComponent,
-    OtpComponent
+   
   ],
   imports: [
     BrowserModule,
@@ -24,6 +25,11 @@ import { OtpComponent } from './views/sharedComponents/otp/otp.component';
     ReactiveFormsModule,
     FormsModule,
     HttpClientModule,
+    ToastrModule.forRoot({
+      timeOut: 10000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

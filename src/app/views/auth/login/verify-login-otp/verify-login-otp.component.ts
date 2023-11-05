@@ -13,8 +13,9 @@ import { JwtService } from 'src/app/services/jwt.service';
 })
 export class VerifyLoginOtpComponent {
   formOtp:FormGroup;
-  error:string = "";
+  error_message:string = "";
   param:string | null = "";
+  imageUrl:string = '../../../assets/tp.png'
   userdata!: verifyOtpResponse;
   constructor(private _forms:FormBuilder,private _jwt:JwtService, private _router:Router, private _authService:AuthService, private _route:ActivatedRoute){
 
@@ -34,11 +35,12 @@ export class VerifyLoginOtpComponent {
       if (this.userdata.status === "Success") {
         let role: UserRole = this.userdata.data.isAdmin ? UserRole.Admin : UserRole.User;
         this._jwt.setToken(this.userdata.token);
-        this._jwt.setRole(role);
-        this._jwt.setLocal(this.userdata.data);
-        console.log("success");
+       this._jwt.setRole(role);
+       this._jwt.setLocal(this.userdata.data);
+       console.log("success");
+       this._router.navigate(['user'])
         } else {
-          this.error = "something went wrong"
+          this.error_message = "something went wrong"
           this._router.navigate(['auth/login.password']);
         }
     })

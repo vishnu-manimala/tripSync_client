@@ -35,6 +35,9 @@ login() {
        this._jwt.setLocal(response.data);
        console.log("success");
        this._router.navigate(['user'])
+      }else {
+        this.error_message = "something went wrong"
+        this._router.navigate(['auth/login.password']);
       }
     })
   } else {

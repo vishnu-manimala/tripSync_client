@@ -12,7 +12,8 @@ import { confirmPasswordValidator } from 'src/app/validators/confirm.password.va
 export class RegisterComponent {
   registerForm: FormGroup;
   isError:boolean=false;
-
+  imageUrl:string = '../../../assets/tp.png'
+  
 constructor(private _router:Router, private _form:FormBuilder, private _authService:AuthService){
   this.registerForm = this._form.group({
     name:this._form.control("",Validators.required),

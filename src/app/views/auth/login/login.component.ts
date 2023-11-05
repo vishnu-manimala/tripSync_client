@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent {
   otpLoginForm:FormGroup;
   error:string = "";
+  imageUrl:string = '../../../assets/tp.png'
   response!: sendOtpResponse;
 constructor(private _router:Router,private _formlogin:FormBuilder, private _authService:AuthService){
 

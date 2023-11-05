@@ -1,0 +1,102 @@
+
+
+
+?????flex ????
+
+
+    <nav class="navbar  shadow-lg  bg-white-400">
+        <div class="flex justify-between  items-center px-6">
+            <!-- toggle button -->
+            <button type="button" name="toggle" id="menu-button" (click)="expandSidebar()" class="md:hidden lg:hidden xl:hidden">
+                <i class="fas fa-bars text-cyan-500 text-lg"></i>
+            </button>
+            <!-- Logo  -->
+            <div class="mx-auto">
+                <img src="../../../assets/TripSync.png" alt="logo" class="h-20 w-28">
+            </div>
+
+            <div class="space-x-4">
+                <button>
+                    <i class="fa-regular fa-comments text-cyan-700 text-lg"></i>
+                </button>
+                <button>
+                    <i class="fa-solid fa-phone text-cyan-700 text-lg"></i>
+                </button>
+                <button>
+                    <i class="fa-solid fa-video  text-cyan-700 text-lg"></i>
+                </button>
+                <button>
+                    <i class="fa-regular fa-bell  text-cyan-700 text-lg"></i>
+                </button>
+
+                <button>
+                    <i class="fa-solid fa-power-off  text-cyan-700 text-lg"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="flex flex-row">
+    <!-- Barra lateral -->
+    <div class="basis-1/4 "  id="sidebar" *ngIf="isSidebarExpanded"
+        class=" py-2 bg-white  h-screen fixed  rounded-none border-none transition-all duration-200 ease-in-out overflow-hidden shadow-lg shadow-gray-800">
+        <!-- Items -->
+        <div class="hidden sm:block p-2 space-y-1 text-center">
+            <img class="relative inline-block  h-20 w-20 rounded-full object-cover object-center text-center"
+                alt="Image placeholder"
+                src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png" /><br>
+            <span>Name</span><br>
+            <span>Phone</span>
+        </div>
+        <div class="side p-2 space-y-1 text-gray-800">
+            <!-- Inicio -->
+            <button class="relative px-3 py-1 flex items-center space-x-4 justify-start rounded-lg group" (click)="home()">
+                <i class="fas fa-home text-lg"></i>
+                <span
+                    class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block">Home</span>
+            </button>
+
+            <!-- Autorizaciones -->
+            <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group" (click)="profile()">
+                <i class="fa-solid fa-user"></i>
+                <span
+                    class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block">Profile</span>
+            </button>
+
+            <!-- Usuarios -->
+            <button class="relative px-3 py-1 flex items-center space-x-4 justify-start rounded-lg group" (click)="account()">
+                <i class="fas fa-users"></i>
+                <span
+                    class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100  hidden sm:hidden md:block lg:block xl:block">Account</span>
+            </button>
+
+            <!-- Comercios -->
+            <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group" (click)="vehicle()">
+                <i class="fa-solid fa-car"></i>
+                <span
+                    class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block">Vehicle</span>
+            </button>
+            <!-- Transacciones -->
+            <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group" (click)="rides()">
+                <i class="fa-brands fa-slideshare"></i>
+                <span
+                    class="font-medium transition-all duration-200 md:opacity-100 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block">Rides</span>
+            </button>
+
+            <!-- Cerrar sesión -->
+            <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group" (click)="publishRides()">
+                <i class="fas fa-sign-out-alt"></i>
+                <span
+                    class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block">Published
+                    Rides</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Contenedor gris al lado de la barra lateral -->
+    <div 
+        class="basis-3/4  container h-screen scroll w-full  transition-all duration-200 ease-in-out bg-white border-gray-800 shadow shadow-teal-600" >
+        <router-outlet></router-outlet>
+    </div>
+</div>

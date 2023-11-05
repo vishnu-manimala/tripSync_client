@@ -1,0 +1,16 @@
+
+
+<div
+  class="flex flex-col justify-center md:justify-start my-auto mt-3 md:pt-0 px-8 md:px-24 lg:px-32 w-11/12 sm:w-full md:w-2/3 text-cyan-300">
+  <p class="text-center text-3xl">Vehicle Details.</p>
+
+  <form class="flex flex-col  md:pt-8" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    <div class="flex flex-col pt-1">
+      <span class="pb-2">You can choose multiple data</span>
+      <input type="file" id="color" id="inputGroupFile02"  accept="image/*" name="files" (change)="onFileSelected($event)" multiple
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+    </div>
+    <input type="submit" value="Submit"
+      class="bg-cyan-300 w-1/4 text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
+    <span class="text-center text-red-950">Something went wrong!!</span>
+  </form>

@@ -16,7 +16,23 @@ children:[
   }
 ]
 },
-{path:'user',component:UserComponent}
+{path:'user',component:UserComponent,
+children:[
+  
+  {
+    path:'vehicles',
+    loadChildren:()=>import('./views/user/vehicles/vehicles.module').then(m=>m.VehiclesModule)
+  },
+  {
+    path:'rides',
+    loadChildren:()=>import('./views/user/rides/rides.module').then(m=>m.RidesModule)
+  },
+  {
+    path:'publish.rides',
+    loadChildren:()=>import('./views/user/publis-rides/publis-rides.module').then(m=>m.PublisRidesModule)
+  }
+]
+}
 ];
 
 @NgModule({

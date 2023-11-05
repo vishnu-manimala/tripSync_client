@@ -13,6 +13,7 @@ import { JwtService } from 'src/app/services/jwt.service';
 export class LoginPasswordComponent {
   loginData: FormGroup;
   error_message: string = "";
+  imageUrl:string = '../../../assets/tp.png'
 constructor(private _router:Router,private _loginForm: FormBuilder, private _authService:AuthService, private _jwt:JwtService){
 
   this.loginData = this._loginForm.group({
@@ -27,11 +28,13 @@ login() {
 
     this._authService.passwordLogin(this.loginData.value).subscribe((response: any) => {
       if (response.status === "Success") {
+        console.log(response)
        let role: UserRole = response.data.isAdmin ? UserRole.Admin : UserRole.User;
        this._jwt.setToken(response.token);
        this._jwt.setRole(role);
        this._jwt.setLocal(response.data);
        console.log("success");
+       this._router.navigate(['user'])
       }
     })
   } else {

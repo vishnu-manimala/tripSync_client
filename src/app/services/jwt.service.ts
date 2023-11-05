@@ -17,8 +17,8 @@ export class JwtService {
     return "success";
   }
   getToken():string{
-    const myToken =  this._cookie.get('access_token');
-    return myToken;
+    const token =  this._cookie.get('access_token');
+    return token;
   }
   getRole():string{
     return this._cookie.get('role');
@@ -26,14 +26,21 @@ export class JwtService {
 
   discardToken():string{
       this._cookie.delete('access_token');
-      this._cookie.delete('role');
-      return this.isTokenAvailable()?"success":"failed";
+      return this.isTokenAvailable()?"failed":"success";
   }
-
+  discardRole():string{
+    
+    this._cookie.delete('role');
+    return this.isRoleAvailable()?"failed":"success";
+}
   isTokenAvailable():boolean{
     return this._cookie.check('access_token');
   }
-
+  isRoleAvailable():boolean{
+    let role =  this._cookie.check('role');
+    console.log(role)
+     return role;
+  }
   setLocal(data:any){
     localStorage.setItem('state',JSON.stringify(data));
   }

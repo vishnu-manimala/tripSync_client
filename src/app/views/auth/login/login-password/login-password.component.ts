@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { UserRole } from 'src/app/models/auth.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { JwtService } from 'src/app/services/jwt.service';
@@ -13,7 +14,8 @@ import { JwtService } from 'src/app/services/jwt.service';
 export class LoginPasswordComponent {
   loginData: FormGroup;
   error_message: string = "";
-  imageUrl:string = '../../../assets/tp.png'
+  imageUrl:string = '../../../assets/tp.png';
+  private loginSubscription!:Subscription;
 constructor(private _router:Router,private _loginForm: FormBuilder, private _authService:AuthService, private _jwt:JwtService){
 
   this.loginData = this._loginForm.group({
@@ -26,7 +28,7 @@ login() {
   console.log(this.loginData.value);
   if (this.loginData.valid) {
 
-    this._authService.passwordLogin(this.loginData.value).subscribe((response: any) => {
+    this.loginSubscription =this._authService.passwordLogin(this.loginData.value).subscribe((response: any) => {
       if (response.status === "Success") {
         console.log(response)
        let role: UserRole = response.data.isAdmin ? UserRole.Admin : UserRole.User;
@@ -50,8 +52,16 @@ login() {
 
 
 
-navigateToRegister(){
-    this._router.navigate(['auth/register']);
+navigation(url:string){
+    this._router.navigate([url]);
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    if(this.loginSubscription){
+      this.loginSubscription.unsubscribe();
+    }
   }
 
 }

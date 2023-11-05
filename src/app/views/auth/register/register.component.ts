@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/services/auth.service';
 import { confirmPasswordValidator } from 'src/app/validators/confirm.password.validator';
 
@@ -13,7 +14,8 @@ export class RegisterComponent {
   registerForm: FormGroup;
   isError:boolean=false;
   imageUrl:string = '../../../assets/tp.png'
-  
+  private registerSubscription!:Subscription;
+
 constructor(private _router:Router, private _form:FormBuilder, private _authService:AuthService){
   this.registerForm = this._form.group({
     name:this._form.control("",Validators.required),
@@ -48,7 +50,7 @@ passwordMatchValidator(group:FormGroup){
     console.log("gkjhh",this.registerForm.valid)
     if (this.registerForm.valid) {
       if (!this.passwordMatchValidator(this.registerForm)) {
-        this._authService.registerUser(this.registerForm.value).subscribe(
+        this.registerSubscription = this._authService.registerUser(this.registerForm.value).subscribe(
           (result: any) => {
             console.log(result);
             if (result == "success") {
@@ -58,6 +60,14 @@ passwordMatchValidator(group:FormGroup){
             }
           })
       }
+    }
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    if(this.registerSubscription){
+      this.registerSubscription.unsubscribe();
     }
   }
  

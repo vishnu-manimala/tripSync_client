@@ -17,7 +17,11 @@
         </div>
         <input [disabled]="otpLoginForm.invalid" [class.disabled]="otpLoginForm.invalid" type="submit" value="Send OTP" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
     </form>
-    <div class="text-center pt-3 pb-6">
-        <p>Login with password? <a (click)="navigateToLoginWithPassword()" class="underline font-semibold">Log in here.</a></p>
+    <div class="text-center pt-12 ">
+        <p>Forgot passwordt? <a class="underline font-semibold" (click)="navigation('auth/forgot.password')">Reset here.</a>
+        </p>
+    </div>
+    <div class="text-center pt-1 pb-6">
+        <p>Login with password? <a (click)="navigation('auth/login.password')" class="underline font-semibold">Log in here.</a></p>
     </div>
 </div>

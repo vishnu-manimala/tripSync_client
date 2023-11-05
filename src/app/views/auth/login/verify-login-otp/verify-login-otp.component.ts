@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 import { verifyOtpResponse } from 'src/app/models/api.models';
 import { UserRole } from 'src/app/models/auth.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -17,6 +18,8 @@ export class VerifyLoginOtpComponent {
   param:string | null = "";
   imageUrl:string = '../../../assets/tp.png'
   userdata!: verifyOtpResponse;
+  private verifyLoginSubscription!:Subscription;
+
   constructor(private _forms:FormBuilder,private _jwt:JwtService, private _router:Router, private _authService:AuthService, private _route:ActivatedRoute){
 
     this._route.queryParams.subscribe(params=>{
@@ -29,7 +32,7 @@ export class VerifyLoginOtpComponent {
   }
   verifyOtp(){
    
-    this._authService.verifyOtp(this.formOtp.value,this.param).subscribe((result: any) => {
+    this.verifyLoginSubscription = this._authService.verifyOtp(this.formOtp.value,this.param).subscribe((result: any) => {
       console.log(result);
       this.userdata = result;
       if (this.userdata.status === "Success") {
@@ -49,5 +52,13 @@ export class VerifyLoginOtpComponent {
   
   navigateToLoginWithPassword(){
     this._router.navigate(['auth/login.password'])
+  }
+
+  ngOnDestroy(): void {
+    //Called once, before the instance is destroyed.
+    //Add 'implements OnDestroy' to the class.
+    if(this.verifyLoginSubscription){
+      this.verifyLoginSubscription.unsubscribe();
+    }
   }
 }

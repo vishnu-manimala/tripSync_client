@@ -9,13 +9,13 @@
     <p class="text-center text-3xl">Verify OTP</p>
     <form class="flex flex-col pt-3 md:pt-8" [formGroup]="formOtp" (submit)="verifyOtp()">
         <div class="flex flex-col pt-4">
-            <label for="email" class="text-lg">Phone</label>
-            <input type="email" id="email" formControlName="otp" placeholder="Phone" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+            <label for="otp" class="text-lg">OTP</label>
+            <input type="number" id="otp" formControlName="otp" placeholder="OTP" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
             <span *ngIf="formOtp.hasError('required','otp') && formOtp.controls['otp'].dirty" class="text-danger ps-2">*OTP is required</span>
             <span *ngIf="formOtp.hasError('maxLength','otp') && formOtp.controls['phone'].dirty" class="text-danger ps-2">*Enter valid OTP</span>
             <span *ngIf="formOtp.hasError('minLength','otp') && formOtp.controls['phone'].dirty" class="text-danger ps-2">*Enter a valid OTP</span>
         </div>
-        <input type="submit" value="Send OTP" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
+        <input type="submit" value="Verify" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
         <span *ngIf="error_message">{{error_message}}</span>
     </form>
     <div class="text-center pt-3 pb-6">

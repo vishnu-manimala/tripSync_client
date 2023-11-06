@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
 import { verifyOtpResponse } from 'src/app/models/api.models';
 import { UserRole } from 'src/app/models/auth.model';
@@ -20,7 +21,7 @@ export class VerifyLoginOtpComponent {
   userdata!: verifyOtpResponse;
   private verifyLoginSubscription!:Subscription;
 
-  constructor(private _forms:FormBuilder,private _jwt:JwtService, private _router:Router, private _authService:AuthService, private _route:ActivatedRoute){
+  constructor(private _forms:FormBuilder,private _jwt:JwtService, private _router:Router, private _authService:AuthService, private _route:ActivatedRoute,private _toaster:ToastrService){
 
     this._route.queryParams.subscribe(params=>{
       this.param = params['phone'];
@@ -36,6 +37,7 @@ export class VerifyLoginOtpComponent {
       console.log(result);
       this.userdata = result;
       if (this.userdata.status === "Success") {
+        this._toaster.success("Succesfully Logged in!")
         let role: UserRole = this.userdata.data.isAdmin ? UserRole.Admin : UserRole.User;
         this._jwt.setToken(this.userdata.token);
        this._jwt.setRole(role);
@@ -43,6 +45,7 @@ export class VerifyLoginOtpComponent {
        console.log("success");
        this._router.navigate(['user'])
         } else {
+          this._toaster.error(this.userdata.message);
           this.error_message = "something went wrong"
           this._router.navigate(['auth/login.password']);
         }
@@ -55,8 +58,6 @@ export class VerifyLoginOtpComponent {
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     if(this.verifyLoginSubscription){
       this.verifyLoginSubscription.unsubscribe();
     }

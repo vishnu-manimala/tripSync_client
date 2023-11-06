@@ -8,10 +8,7 @@ import { AddRegistrationComponent } from './add-registration/add-registration.co
 import { AddInsuranceComponent } from './add-insurance/add-insurance.component';
 import { AddImagesComponent } from './add-images/add-images.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VehicleComponent } from './sharedComponents/vehicle/vehicle.component';
-import { RegistrationComponent } from './sharedComponents/registration/registration.component';
-import { InsuranceComponent } from './sharedComponents/insurance/insurance.component';
-import { ImagesComponent } from './sharedComponents/images/images.component';
+import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
 
 
 @NgModule({
@@ -21,10 +18,7 @@ import { ImagesComponent } from './sharedComponents/images/images.component';
     AddRegistrationComponent,
     AddInsuranceComponent,
     AddImagesComponent,
-    VehicleComponent,
-    RegistrationComponent,
-    InsuranceComponent,
-    ImagesComponent
+    ViewVehicleComponent
   ],
   imports: [
     CommonModule,

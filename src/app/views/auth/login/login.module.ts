@@ -25,6 +25,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
   ]
 })
 export class LoginModule { }

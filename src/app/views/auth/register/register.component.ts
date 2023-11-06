@@ -38,7 +38,6 @@ passwordMatchValidator(group:FormGroup){
   const confirmPassword = group.get('confirm_password')?.value;
   console.log("pas",password !== confirmPassword );
   if(password !== confirmPassword ){
-  
     return true
   }else{
     return false;
@@ -52,7 +51,7 @@ passwordMatchValidator(group:FormGroup){
         this.registerSubscription = this._authService.registerUser(this.registerForm.value).subscribe(
           (result: any) => {
             console.log(result);
-            if (result == "success") {
+            if (result === "success") {
               this._router.navigate(['auth']);
             }else{
               this.isError = true;
@@ -63,8 +62,6 @@ passwordMatchValidator(group:FormGroup){
   }
 
   ngOnDestroy(): void {
-    //Called once, before the instance is destroyed.
-    //Add 'implements OnDestroy' to the class.
     if(this.registerSubscription){
       this.registerSubscription.unsubscribe();
     }

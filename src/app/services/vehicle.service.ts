@@ -28,4 +28,9 @@ export class VehicleService {
     return this._http.post('http://localhost:3001/vehicle/save.vehicle.photos',files);
   }
 
+  //to get all vehicles data added in profile
+  getVehiclesData(){
+    return this._http.get('http://localhost:3001/vehicle/get.vehicles.info');
+  }
+
 }

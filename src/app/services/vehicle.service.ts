@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Vehicle, Vehicleresponse } from '../models/vehicle_response.model';
 import { Observable, flatMap, from, map } from 'rxjs';
+import { ApiResponse } from '../models/api.models';
 
 @Injectable({
   providedIn: 'root'
@@ -35,5 +36,7 @@ export class VehicleService {
   getVehiclesData(): Observable<Vehicle[]>{
     return this._http.get<Vehicle[]>('http://localhost:3001/vehicle/get.vehicles.info')
   }
-
+  deleteVehicle(id:string):Observable<ApiResponse>{
+    return this._http.get<ApiResponse>(`http://localhost:3001/vehicle/delete?id=${id}`)
+  }
 }

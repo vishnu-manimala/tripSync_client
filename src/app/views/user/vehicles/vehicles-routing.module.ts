@@ -14,7 +14,7 @@ const routes: Routes = [
   {path:'add.insurance', component:AddInsuranceComponent},
   {path:'add.images', component:AddImagesComponent},
   {path:'view.vehicle', component:ViewVehicleComponent},
-  // {path:'add.registration', component:AddRegistrationComponent}
+  //{path:'add.registration', component:AddRegistrationComponent}
 
 ];
 

@@ -13,3 +13,7 @@ export type sendOtpResponse = {
     data: UserData,
     token:string  
   };
+  export type ApiResponse = {
+    status: string;      
+    message: string;       
+  };

@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./view-vehicle.component.css']
 })
 export class ViewVehicleComponent {
+  editBasic:boolean = false;
 
+  constructor(){}
+
+  EditBasic(){
+    this.editBasic = true;
+  }
 }

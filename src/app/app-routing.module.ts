@@ -5,8 +5,12 @@ import { UserComponent } from './layouts/user/user.component';
 import { authGuard } from './guards/auth.guard';
 import { roleGuard } from './guards/role.guard';
 import { isLoggedOutGuard } from './guards/is-logged-out.guard';
+import { HomeComponent } from './layouts/home/home.component';
 
 const routes: Routes = [
+{
+  path:'',component:HomeComponent,canActivate:[isLoggedOutGuard]
+},
 {path:'auth',
 component:AuthComponent,
 canActivate:[isLoggedOutGuard],

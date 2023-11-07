@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Vehicleresponse } from 'src/app/models/vehicle_response.model';
 import { JwtService } from 'src/app/services/jwt.service';
 import { VehicleService } from 'src/app/services/vehicle.service';
 
@@ -11,8 +13,9 @@ import { VehicleService } from 'src/app/services/vehicle.service';
 })
 export class AddVehicleComponent {
   vehicleData:FormGroup;
+  private _vehicleSubscription!:Subscription;
   brands:any;
-  returnData:any;
+  returnData!:Vehicleresponse;
   error:boolean=false;
   errorMessage:string = "";
   models:any;
@@ -72,12 +75,12 @@ export class AddVehicleComponent {
   submitVehicleData(){
     console.log(this.vehicleData.value);
   if (this.vehicleData.valid) {
-    this._vehicleService.saveVehicleData(this.vehicleData.value).subscribe((result:any) => {
+    this._vehicleSubscription = this._vehicleService.saveVehicleData(this.vehicleData.value).subscribe((result:Vehicleresponse) => {
       this.returnData = result;
       console.log(this.returnData);
       if (this.returnData.status === "Success") {
-        this._jwt.setToken(this.returnData.token);console.log("in succes")
-        this._router.navigate(['add.vehicle.registartion'])
+        this._jwt.setToken(this.returnData.token!);console.log("in success")
+        this._router.navigate(['user/vehicles/add.registration'])
       } else {
         this.error = true;
         this.errorMessage = this.returnData.message;
@@ -86,6 +89,13 @@ export class AddVehicleComponent {
   }else{
     this.error = true;
     this.errorMessage = "Form is not valid!";
+  }
+}
+
+ngOnDestroy(): void {
+ 
+  if(this._vehicleSubscription){
+    this._vehicleSubscription.unsubscribe();
   }
 }
 }

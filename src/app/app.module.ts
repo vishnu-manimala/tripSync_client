@@ -7,8 +7,11 @@ import { AppComponent } from './app.component';
 import { AdminComponent } from './layouts/admin/admin.component';
 import { UserComponent } from './layouts/user/user.component';
 import { AuthComponent } from './layouts/auth/auth.component';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { ToastrModule } from 'ngx-toastr';
+import { JwtInterceptor } from './interceptor/jwt.interceptor';
+import { HomeComponent } from './layouts/home/home.component';
+import { NavbarComponent } from './layouts/navbar/navbar.component';
 
 
 @NgModule({
@@ -17,6 +20,8 @@ import { ToastrModule } from 'ngx-toastr';
     AdminComponent,
     UserComponent,
     AuthComponent,
+    HomeComponent,
+    NavbarComponent,
    
   ],
   imports: [
@@ -32,7 +37,11 @@ import { ToastrModule } from 'ngx-toastr';
     }),
     
   ],
-  providers: [],
+  providers: [{
+    provide:HTTP_INTERCEPTORS,
+    useClass:JwtInterceptor,
+    multi:true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

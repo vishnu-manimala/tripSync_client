@@ -1,4 +1,5 @@
 <div>
+    
     <nav class="navbar  shadow-lg">
         <div class="flex justify-between items-center px-6">
             <!-- toggle button -->
@@ -35,18 +36,18 @@
     <div class="flex">
         <!-- Side bar -->
         <div id="sidebar" *ngIf="isSidebarExpanded"
-            class="m-1 w-1/5 xl:w-1/5 lg:w-1/5 md:w-1/5 py-2 bg-white text-center h-screen transition-all duration-200 ease-in-out overflow-hidden shadow-lg shadow-gray-800">
+            class="m-10 w-1/5 sm:w-1/6 xl:w-1/5 lg:w-1/5 md:w-1/5 py-2 bg-white text-center h-screen transition-all duration-200 ease-in-out overflow-hidden shadow-lg shadow-gray-800">
             <!-- Items -->
-            <div class="hidden sm:block p-2 space-y-1 text-center">
+            <div class="hidden sm:hidden md:block lg:block p-2 space-y-1 text-center">
                 <img class="relative inline-block  h-20 w-20 rounded-full object-cover object-center text-center"
                     alt="Image placeholder"
                     src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png" /><br>
                 <span>Name</span><br>
                 <span>Phone</span>
             </div>
-            <div class="side p-2 space-y-1 text-teal-600 text-start">
+            <div class="side p-2 space-y-1 text-teal-600 text-center sm:text-center md:text-start lg:text-start">
               
-                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start rounded-lg group"
+                <button class="relative px-3 py-1 flex items-center space-x-4  rounded-lg group"
                     (click)="home()">
                     <i class="fas fa-home text-lg"></i>
                     <span
@@ -98,9 +99,8 @@
 
 
         <!-- Main Content Container -->
-        <div [ngClass]="{'m-0': !isSidebarExpanded, 'm-1': isSidebarExpanded}"
-            class="container  h-screen w-full lg:w-4/5 transition-all duration-200 ease-in-out bg-gray-100">
-
-            <router-outlet></router-outlet>
+        <div [ngClass]="{'m-0': !isSidebarExpanded, 'm-10': isSidebarExpanded}"
+            class="container object-center  h-screen w-full  lg:w-4/5 transition-all duration-200 ease-in-out bg-gray-100">
+            <router-outlet ></router-outlet>
         </div>
     </div>

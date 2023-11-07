@@ -34,11 +34,13 @@ export class JwtService {
     return this.isRoleAvailable()?"failed":"success";
 }
   isTokenAvailable():boolean{
-    return this._cookie.check('access_token');
+    let token = this._cookie.check('access_token');
+    console.log("token>>",token)
+    return token;
   }
   isRoleAvailable():boolean{
     let role =  this._cookie.check('role');
-    console.log(role)
+    console.log("role",role)
      return role;
   }
   setLocal(data:any){

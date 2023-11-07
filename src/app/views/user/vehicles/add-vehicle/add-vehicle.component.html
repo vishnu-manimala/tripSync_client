@@ -1,12 +1,10 @@
 
-<div class="flex flex-col justify-center md:justify-start my-auto mt-1 md:pt-0 px-8 md:px-24 lg:px-32 w-11/12 sm:w-full md:w-2/3 text-cyan-300">
-    <p class="text-center text-3xl">Vehicle Details.</p>
-
-
-    <form class="flex flex-col  md:pt-8" [formGroup]="vehicleData" (submit)="submitVehicleData()" >
+<div class="child-div card  flex flex-col justify-center shadow-zinc-600 m-1.5 md:justify-center  md:pt-0 px-8 md:px-24 lg:px-32 w-11/12 sm:w-full md:w-2/3 lg:w-4/5 xl:w-4/5 text-gray-800">
+    <p class="text-center text-3xl mt-2"></p>
+    <form class="flex flex-col  md:pt-8 w-full" [formGroup]="vehicleData" (submit)="submitVehicleData()" >
         <div class="flex flex-col pt-1">
             <label for="vechicleType" class="text-lg">Vehicle Type</label>
-            <select  id="vechicleType" (change)="onTypeValue()" formControlName="type" placeholder="John Smith" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
+            <select  id="vechicleType" (change)="onTypeValue()" formControlName="type"  class="data-te-select-init shadow   py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
                 <option value="Car">Car</option>
                 <option value="Moto" >Two wheeler</option>
             </select>
@@ -15,7 +13,7 @@
         </div>
         <div class="flex flex-col pt-1">
             <label for="brand" class="text-lg">Select a Brand</label>
-            <select  id="brand"  formControlName="brand" (change)="onBrandValue()" placeholder="John Smith" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
+            <select  id="brand"  formControlName="brand" (change)="onBrandValue()"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
                 <option value="{{brand.MakeName}}" *ngFor="let brand of brands.Results">{{brand.MakeName}}</option>
             </select>
             <span *ngIf="vehicleData.hasError('required','brand')&& vehicleData.controls['brand'].dirty"
@@ -43,8 +41,9 @@
             <span *ngIf="vehicleData.hasError('required','year')&& vehicleData.controls['year'].dirty"
             class="text-danger text-center ps-2 pt-2 col-12">*Year is required</span>
         </div>
-        <input type="submit"  value="Submit" class="bg-cyan-300 w-1/4 text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
-        <span class="text-center text-red-950" >Something went wrong!!</span>
+        <div class="text-center mt-2">
+            <input type="submit"  value="Submit" class="bg-cyan-300 w-1/4 text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
+        </div>
     </form>
    
 

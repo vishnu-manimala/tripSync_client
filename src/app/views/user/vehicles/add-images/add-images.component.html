@@ -1,16 +1,24 @@
-
-
 <div
-  class="flex flex-col justify-center md:justify-start my-auto mt-3 md:pt-0 px-8 md:px-24 lg:px-32 w-11/12 sm:w-full md:w-2/3 text-cyan-300">
-  <p class="text-center text-3xl">Vehicle Details.</p>
-
-  <form class="flex flex-col  md:pt-8" (ngSubmit)="onSubmit()" enctype="multipart/form-data">
-    <div class="flex flex-col pt-1">
-      <span class="pb-2">You can choose multiple data</span>
-      <input type="file" id="color" id="inputGroupFile02"  accept="image/*" name="files" (change)="onFileSelected($event)" multiple
-        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+  class=" child-div block max-w-xl rounded-lg bg-white p-6 m-6 ">
+  <h4 class="pb-3">Add vehicle Images</h4>
+  <form  (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+    
+    <div class="relative mb-12" data-te-input-wrapper-init>
+      
+      
+      <input
+    class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+    type="file"
+    accept="image/*" name="files" (change)="onFileSelected($event)"
+    id="formFileMultiple"
+    multiple />
     </div>
-    <input type="submit" value="Submit"
-      class="bg-cyan-300 w-1/4 text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
-    <span class="text-center text-red-950">Something went wrong!!</span>
+    <!--Submit button-->
+    <button
+      type="submit"
+      class="bg-cyan-300  text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded inline-block rounded  px-6 pb-2 pt-2.5  uppercase leading-normal text-white "
+      data-te-ripple-init
+      data-te-ripple-color="light">
+      Submit
+    </button>
   </form>

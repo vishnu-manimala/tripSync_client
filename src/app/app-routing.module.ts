@@ -6,6 +6,7 @@ import { authGuard } from './guards/auth.guard';
 import { roleGuard } from './guards/role.guard';
 import { isLoggedOutGuard } from './guards/is-logged-out.guard';
 import { HomeComponent } from './layouts/home/home.component';
+import { AdminComponent } from './layouts/admin/admin.component';
 
 const routes: Routes = [
 {
@@ -51,6 +52,9 @@ children:[
     data:{role:'user'}
   }
 ]
+},
+{
+  path:'admin',component:AdminComponent
 }
 ];
 

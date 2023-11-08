@@ -46,7 +46,7 @@ export class VehiclesComponent {
   }
   view(id:string){
     console.log(id);
-    this._router.navigate(['user/vehicle/view.vehicle'],{ queryParams: { id: id } })
+    this._router.navigate(['user/vehicles/view.vehicle'],{ queryParams: { id: id } })
   }
   
   delete(id:string){

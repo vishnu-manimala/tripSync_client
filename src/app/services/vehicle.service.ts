@@ -39,4 +39,8 @@ export class VehicleService {
   deleteVehicle(id:string):Observable<ApiResponse>{
     return this._http.get<ApiResponse>(`http://localhost:3001/vehicle/delete?id=${id}`)
   }
+  getVehicleData(id:string|null): Observable<Vehicleresponse>{
+    return this._http.get<Vehicleresponse>(`http://localhost:3001/vehicle/get.vehicle.info?id=${id}`);
+  }
+  
 }

@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { DeleterideModalComponent } from './components/deleteride-modal/deleteride-modal.component';
 import { CancelModalComponent } from './components/cancel-modal/cancel-modal.component';
+import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { CancelModalComponent } from './components/cancel-modal/cancel-modal.com
     NavbarComponent,
     DeleterideModalComponent,
     CancelModalComponent,
+    ErrorModalComponent,
    
   ],
   imports: [

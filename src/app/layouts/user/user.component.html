@@ -1,4 +1,4 @@
-<div> 
+<div>
     <nav class="navbar  shadow-lg">
         <div class="flex justify-between items-center px-6">
             <!-- toggle button -->
@@ -12,21 +12,28 @@
             </div>
 
             <div class="space-x-4">
-                <button>
-                    <i class="fa-regular fa-comments text-cyan-700 text-lg"></i>
-                </button>
-                <button>
-                    <i class="fa-solid fa-phone text-cyan-700 text-lg"></i>
-                </button>
-                <button>
-                    <i class="fa-solid fa-video  text-cyan-700 text-lg"></i>
-                </button>
-                <button>
-                    <i class="fa-regular fa-bell  text-cyan-700 text-lg"></i>
+
+                <button type="submit"
+                    class="bg-blue-600  text-gray-800   hover:bg-gray-700 p-2 pl-3 pr-3 rounded-3xl inline-block rounded    px-2 leading-normal text-white "
+                    data-te-ripple-init data-te-ripple-color="light" (click)="naviagtor('/user/search')">
+                    Search ride
                 </button>
 
+                <!-- <button>
+                    <i class="fa-regular fa-comments text-blue-700 text-lg"></i>
+                </button>
+                <button>
+                    <i class="fa-solid fa-phone text-blue-700 text-lg"></i>
+                </button>
+                <button>
+                    <i class="fa-solid fa-video  text-blue-700 text-lg"></i>
+                </button>
+                <button>
+                    <i class="fa-regular fa-bell  text-blue-700 text-lg"></i>
+                </button> -->
+
                 <button (click)="logout()">
-                    <i class="fa-solid fa-power-off  text-cyan-700 text-lg"></i>
+                    <i class="fa-solid fa-power-off  text-blue-700 text-lg"></i>
                 </button>
             </div>
         </div>
@@ -35,49 +42,39 @@
     <div class="flex">
         <!-- Side bar -->
         <div id="sidebar" *ngIf="isSidebarExpanded"
-            class="m-0 sm:m-0 md:m-5 lg:m-10 w-1/5 sm:w-1/5 xl:w-1/5 lg:w-1/5 md:w-1/5 py-2 bg-white text-center h-screen transition-all duration-200 ease-in-out overflow-hidden shadow-lg shadow-gray-800">
+            class="m-0 sm:m-0 md:m-5 lg:m-10 w-1/5 sm:w-1/5 xl:w-1/5 lg:w-1/5 md:w-1/5 py-2  bg-white text-center h-screen transition-all duration-200 ease-in-out overflow-hidden shadow-lg shadow-gray-800 ">
             <!-- Items -->
             <div class="hidden sm:hidden md:block lg:block p-2 space-y-1 text-center">
-                <img class="relative inline-block  h-20 w-20 rounded-full object-cover object-center text-center"
-                    alt="Image placeholder"
-                    src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png" /><br>
-                <span>Name</span><br>
-                <span>Phone</span>
-            </div>
-            <div class="side p-2 ml-1 md:ml-5 space-y-1 text-cyan-700 text-center sm:text-center md:text-start lg:text-start">
+                <img alt="profileImage" *ngIf="profileImage" [src]="profileImage" class="relative inline-block  h-20 w-20 rounded-full object-cover object-center text-center"  />
+                <img alt="profileImage" *ngIf="!profileImage" src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png" class="relative inline-block  h-20 w-20 rounded-full object-cover object-center text-center"  />
+                <div>
+                  <span>{{userData.name}}</span><br>
+                  <span>{{userData.email}}</span>
+                </div>
+              </div>
               
-                <button class="relative px-3 py-1 flex items-center space-x-4  rounded-lg group"
-                    (click)="home()">
-                    <i class="fas fa-home text-lg"></i>
-                    <span
-                        class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block">Home</span>
-                </button>
+            <div
+                class="side p-2 ml-1 md:ml-5 space-y-1 text-cyan-700 text-center sm:text-center md:text-start lg:text-start">
 
-                <!-- profile -->
-                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group">
-                    <i class="fa-solid fa-user"></i>
-                    <span
-                        class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block"
-                        (click)="navigation('user/profile')">Profile</span>
-                </button>
+              
 
                 <!-- Account -->
-                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start rounded-lg group">
-                    <i class="fas fa-users"></i>
+                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start rounded-lg group" (click)="navigation('user')">
+                    <i class="fas fa-users" ></i>
                     <span
                         class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100  hidden sm:hidden md:block lg:block xl:block"
-                        (click)="navigation('user/account')">Account</span>
+                        (click)="navigation('user')">Account</span>
                 </button>
 
                 <!-- Vehicle -->
-                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group">
+                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group"  (click)="navigation('user/vehicles')">
                     <i class="fa-solid fa-car"></i>
                     <span
                         class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block"
                         (click)="navigation('user/vehicles')">Vehicle</span>
                 </button>
                 <!-- Rides -->
-                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group">
+                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group" (click)="navigation('user/rides')">
                     <i class="fa-brands fa-slideshare"></i>
                     <span
                         class="font-medium transition-all duration-200  opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block"
@@ -85,11 +82,11 @@
                 </button>
 
                 <!-- Published Rides -->
-                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group">
+                <button class="relative px-3 py-1 flex items-center space-x-4 justify-start  rounded-lg group" (click)="navigation('user/publish.rides')">
                     <i class="fas fa-sign-out-alt"></i>
                     <span
                         class="font-medium transition-all duration-200 opacity-0  md:opacity-100 lg:opacity-100 xl:opacity-100 hidden sm:hidden md:block lg:block xl:block"
-                        (click)="navigation('user/published.rides')">Published
+                        (click)="navigation('user/publish.rides')">Published
                         Rides</span>
                 </button>
             </div>
@@ -99,7 +96,7 @@
 
         <!-- Main Content Container -->
         <div [ngClass]="{'m-0': !isSidebarExpanded, 'm-1 sm:m-1 md:m-5 lg:m-10': isSidebarExpanded}"
-            class="container object-center  h-screen w-full  lg:w-4/5 transition-all duration-200 ease-in-out bg-gray-100">
-            <router-outlet ></router-outlet>
+            class="container object-center  h-full w-full  lg:w-4/5 transition-all duration-200 ease-in-out bg-gray-100">
+            <router-outlet></router-outlet>
         </div>
     </div>

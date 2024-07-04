@@ -20,6 +20,8 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
 import { SuccessComponent } from './components/success/success.component';
 import { ReplyModalComponent } from './components/reply-modal/reply-modal.component';
 import { RideModalComponent } from './components/ride-modal/ride-modal.component';
+import { SidebarComponent } from './layouts/admin/sidebar/sidebar.component';
+import { NotFoundComponent } from './layouts/not-found/not-found.component';
 
 
 @NgModule({
@@ -36,6 +38,8 @@ import { RideModalComponent } from './components/ride-modal/ride-modal.component
     SuccessComponent,
     ReplyModalComponent,
     RideModalComponent,
+    SidebarComponent,
+    NotFoundComponent,
    
   ],
   imports: [

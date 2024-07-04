@@ -7,6 +7,7 @@ import { roleGuard } from './guards/role.guard';
 import { isLoggedOutGuard } from './guards/is-logged-out.guard';
 import { HomeComponent } from './layouts/home/home.component';
 import { AdminComponent } from './layouts/admin/admin.component';
+import { NotFoundComponent } from './layouts/not-found/not-found.component';
 
 const routes: Routes = [
 {
@@ -50,12 +51,36 @@ children:[
     loadChildren:()=>import('./views/user/publis-rides/publis-rides.module').then(m=>m.PublisRidesModule),
     canActivate:[authGuard,roleGuard],
     data:{role:'user'}
+  },
+  {
+    path:'profile',
+    loadChildren:()=>import('./views/user/profile/profile.module').then(m=>m.ProfileModule),
+    canActivate:[authGuard,roleGuard],
+    data:{role:'user'}
+  },
+  {
+    path:'',
+    loadChildren:()=>import('./views/user/accounts/accounts.module').then(m=>m.AccountsModule),
+    canActivate:[authGuard,roleGuard],
+    data:{role:'user'}
+  },
+  {
+    path:'search',
+    loadChildren:()=>import('./views/user/search/search.module').then(m=>m.SearchModule),
+    canActivate:[authGuard,roleGuard],
+    data:{role:'user'}
   }
 ]
 },
 {
-  path:'admin',component:AdminComponent
-}
+  path:'admin',component:AdminComponent,
+  children:[{
+    path:"",
+    loadChildren:()=>import('./views/admin/admin.module').then(m=>m.AdminModule)
+  }
+  ]
+},
+{path: '**', component:NotFoundComponent}
 ];
 
 @NgModule({

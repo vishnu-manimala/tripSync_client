@@ -14,6 +14,7 @@ import { HomeComponent } from './layouts/home/home.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { DeleterideModalComponent } from './components/deleteride-modal/deleteride-modal.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
     AuthComponent,
     HomeComponent,
     NavbarComponent,
+    DeleterideModalComponent,
    
   ],
   imports: [

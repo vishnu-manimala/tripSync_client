@@ -6,6 +6,8 @@ import { MapComponent } from './map/map.component';
 import { AutocompleteComponent } from './autocomplete/autocomplete.component';
 import { PublishPaymentComponent } from './publish-payment/publish-payment.component';
 import { PublishRideComponent } from './publish-ride/publish-ride.component';
+import { PublishRideListComponent } from './publish-ride-list/publish-ride-list.component';
+import { RequestModalComponent } from './request-modal/request-modal.component';
 
 
 @NgModule({
@@ -13,7 +15,9 @@ import { PublishRideComponent } from './publish-ride/publish-ride.component';
     MapComponent,
     AutocompleteComponent,
     PublishPaymentComponent,
-    PublishRideComponent
+    PublishRideComponent,
+    PublishRideListComponent,
+    RequestModalComponent
   ],
   imports: [
     CommonModule,

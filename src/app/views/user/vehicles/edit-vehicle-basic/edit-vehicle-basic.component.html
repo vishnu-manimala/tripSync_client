@@ -1,0 +1,44 @@
+
+<div class="child-div card  flex flex-col justify-center shadow-zinc-600 m-1.5 md:justify-center  md:pt-0 px-8 md:px-24 lg:px-32 w-11/12 sm:w-full md:w-2/3 lg:w-4/5 xl:w-4/5 text-gray-800">
+    <p class="text-center text-3xl mt-2"></p>
+    <form class="flex flex-col  md:pt-8 w-full" [formGroup]="vehicleData" (submit)="submitVehicleData()" >
+        <div class="flex flex-col pt-1">
+            <label for="vechicleType" class="text-lg">Vehicle Type</label>
+            <input type="text" class="bg-gray-100 w-1/4 text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" placeholder="{{vehicle.category}}" disabled  />
+        </div>
+        <div class="flex flex-col pt-1">
+            <label for="brand" class="text-lg">Select a Brand : {{vehicle.brand}}</label>
+            <select  id="brand"  formControlName="brand" (change)="onBrandValue()"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
+                <option value="{{brand.MakeName}}" *ngFor="let brand of brands.Results">{{brand.MakeName}}</option>
+            </select>
+            <span *ngIf="vehicleData.hasError('required','brand')&& vehicleData.controls['brand'].dirty"
+            class="text-danger text-center ps-2 pt-2 col-12">*Brand is required</span>
+        </div>
+        <div class="flex flex-col pt-1">
+            <label for="model" class="text-lg">Select a Model : {{vehicle.model}}</label>
+            <select  id="model"   formControlName="model" (change)="onModelValue()"  class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
+                <option value="{{item.model}}" *ngFor="let item of models">{{item.model}}</option>
+            </select>
+            <span *ngIf="vehicleData.hasError('required','model')&& vehicleData.controls['model'].dirty"
+            class="text-danger text-center ps-2 pt-2 col-12">*Model is required</span>
+        </div>
+        <div class="flex flex-col pt-1">
+            <label for="year" class="text-lg">Select a Year : {{vehicle.yearOfManufacture}}</label>
+            <select  id="year"   formControlName="year"   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
+                <option value="{{year.year}}" *ngFor="let year of years">{{year.year}}</option>
+            </select>
+            <span *ngIf="vehicleData.hasError('required','year')&& vehicleData.controls['year'].dirty"
+            class="text-danger text-center ps-2 pt-2 col-12">*Year is required</span>
+        </div>
+        <div class="flex flex-col pt-1">
+            <label for="year" class="text-md">Color : {{vehicle.color}}</label>
+            <input  id="color"   formControlName="color"   class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" >
+            <span *ngIf="vehicleData.hasError('required','year')&& vehicleData.controls['year'].dirty"
+            class="text-danger text-center ps-2 pt-2 col-12">*Year is required</span>
+        </div>
+        <div class="flex flex-row justify-around text-center mt-4">
+            <input type="submit"  value="Submit" class="bg-green-700 w-1/4 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
+            <input type="button" (click)="cancel()" value="Cancel" class="bg-orange-700 w-1/4 text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
+        </div>
+    </form>
+</div>

@@ -1,0 +1,27 @@
+<div
+  class="flex flex-col justify-center md:justify-start my-auto mt-3 md:pt-0 px-8 md:px-24 lg:px-32 w-11/12 sm:w-full md:w-2/3 text-cyan-300">
+  <p class="text-center text-3xl">Vehicle Details.</p>
+
+  <form class="flex flex-col  md:pt-8 text-gray-800" [formGroup]="registrationData" (submit)="submitRegistrationData()">
+    <div class="flex flex-col pt-1">
+      <label for="year" class="text-base">Registration number : {{vehicle.registration.registrationNumber}}</label>
+      <input id="color" formControlName="registrationNumber" placeholder="Registration number"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+      <span *ngIf="registrationData.hasError('required','registrationNumber')&& registrationData.controls['registrationNumber'].dirty"
+        class="text-danger text-center ps-2 pt-2 col-12">*Registration number is required</span>
+    </div>
+    <div class="flex flex-col pt-1 mt-2">
+      <label for="year" class="text-base">Expiry date : {{vehicle.registration.expiryDate.split('T')[0]}}</label>
+      <input id="color" formControlName="expiryDate" placeholder="Expiry Date" type="date"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
+      <span *ngIf="registrationData.hasError('required','expiryDate')&& registrationData.controls['expiryDate'].dirty"
+        class="text-danger text-center ps-2 pt-2 col-12">*Expiry Date is required</span>
+    </div>
+    
+    <div class="flex flex-row justify-around text-center mt-4">
+      <input type="submit"  value="Submit" class="bg-green-700 w-1/4 text-white font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
+      <input type="button" (click)="cancel()" value="Cancel" class="bg-orange-700 w-1/4 text-gray-800 font-bold text-lg hover:bg-gray-700 p-2 mt-2 rounded" />
+  </div>
+  </form>
+
+</div>

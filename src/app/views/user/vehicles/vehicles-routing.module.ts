@@ -6,6 +6,9 @@ import { AddRegistrationComponent } from './add-registration/add-registration.co
 import { AddInsuranceComponent } from './add-insurance/add-insurance.component';
 import { AddImagesComponent } from './add-images/add-images.component';
 import { ViewVehicleComponent } from './view-vehicle/view-vehicle.component';
+import { EditVehicleBasicComponent } from './edit-vehicle-basic/edit-vehicle-basic.component';
+import { EditVehicleRegistrationComponent } from './edit-vehicle-registration/edit-vehicle-registration.component';
+import { EditVehicleInsuranceComponent } from './edit-vehicle-insurance/edit-vehicle-insurance.component';
 
 const routes: Routes = [
   {path:'',component:VehiclesComponent},
@@ -14,8 +17,9 @@ const routes: Routes = [
   {path:'add.insurance', component:AddInsuranceComponent},
   {path:'add.images', component:AddImagesComponent},
   {path:'view.vehicle', component:ViewVehicleComponent},
-  //{path:'add.registration', component:AddRegistrationComponent}
-
+  {path:'edit.vehicle', component:EditVehicleBasicComponent},
+  {path:'edit.registration', component:EditVehicleRegistrationComponent},
+  {path:'edit.insurance', component:EditVehicleInsuranceComponent}
 ];
 
 @NgModule({

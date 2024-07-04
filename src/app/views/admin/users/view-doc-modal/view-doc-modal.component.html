@@ -1,0 +1,21 @@
+<h2 mat-dialog-title class="text-center">VERIFY NOW!</h2>
+<mat-dialog-content class="mat-typography">
+    <mat-card class="example-card" *ngIf="images.length>0">
+
+        <img mat-card-image class="w-72 h-72" *ngFor="let photo of images" [src]="baseUrl+photo"
+            alt="Photo id">
+
+        <mat-card-actions>
+            <button mat-raised-button class="bg-blue-500 rounded shadow-lg p-2 ps-2 pe-2 m-1 text-white"
+                (click)="verify()" *ngIf="!verified">VERIFY</button>
+                <button mat-raised-button class="bg-blue-500 rounded shadow-lg p-2 ps-2 pe-2 m-1 text-white"
+                (click)="verify()" *ngIf="verified">VERIFIED</button>
+        </mat-card-actions>
+    </mat-card>
+    <mat-card class="example-card" *ngIf="images.length<1">
+        <h1>NO IDs UPLOADED</h1>
+    </mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="center">
+    <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>

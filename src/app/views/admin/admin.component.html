@@ -1,0 +1,342 @@
+<div class="relative bg-blue-600 md:pt-12 pb-32 pt-12">
+    <div class="px-4 md:px-10 mx-auto w-full">
+      <div>
+        <!-- Card stats -->
+        <div class="flex flex-wrap">
+          <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+              <div class="flex-auto p-4">
+                <div class="flex flex-wrap">
+                  <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                      Users
+                    </h5>
+  
+                    <span class="font-semibold text-xl text-blueGray-700 ">
+                      {{adminData.totalUsers}}
+                    </span>
+                  </div>
+                  <div class="relative w-auto pl-4 flex-initial">
+                    <div
+                      class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-red-500">
+                      <i class="fas fa-users"></i>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-blueGray-400 mt-4">
+                  <span class="text-emerald-500 mr-2">
+                    <i class="fas fa-arrow-up"></i>
+                  </span>
+                  <span class="whitespace-nowrap">
+                    Since start
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+              <div class="flex-auto p-4">
+                <div class="flex flex-wrap">
+                  <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                      New users
+                    </h5>
+                    <span class="font-semibold text-xl text-blueGray-700">
+                      {{adminData.totalNewUsers}}
+                    </span>
+                  </div>
+                  <div class="relative w-auto pl-4 flex-initial">
+                    <div
+                      class="text-white bg-orange-500 p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full ">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                        class="bi bi-people-fill" viewBox="0 0 16 16">
+                        <path
+                          d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7Zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Zm-5.784 6A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216ZM4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5Z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-blueGray-400 mt-4">
+                  <span class="text-red-500 mr-2">
+                    <i class="fas fa-arrow-up"></i>
+                  </span>
+                  <span class="whitespace-nowrap">
+                    Since last month
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+              <div class="flex-auto p-4">
+                <div class="flex flex-wrap">
+                  <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                      Rides
+                    </h5>
+                    <span class="font-semibold text-xl text-blueGray-700">
+                      {{adminData.totalRides}}
+                    </span>
+                  </div>
+                  <div class="relative w-auto pl-4 flex-initial">
+                    <div
+                      class="text-white p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-pink-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-car-front" viewBox="0 0 16 16">
+                        <path
+                          d="M4 9a1 1 0 1 1-2 0 1 1 0 0 1 2 0Zm10 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM4.862 4.276 3.906 6.19a.51.51 0 0 0 .497.731c.91-.073 2.35-.17 3.597-.17 1.247 0 2.688.097 3.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 10.691 4H5.309a.5.5 0 0 0-.447.276Z" />
+                        <path
+                          d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM4.82 3a1.5 1.5 0 0 0-1.379.91l-.792 1.847a1.8 1.8 0 0 1-.853.904.807.807 0 0 0-.43.564L1.03 8.904a1.5 1.5 0 0 0-.03.294v.413c0 .796.62 1.448 1.408 1.484 1.555.07 3.786.155 5.592.155 1.806 0 4.037-.084 5.592-.155A1.479 1.479 0 0 0 15 9.611v-.413c0-.099-.01-.197-.03-.294l-.335-1.68a.807.807 0 0 0-.43-.563 1.807 1.807 0 0 1-.853-.904l-.792-1.848A1.5 1.5 0 0 0 11.18 3H4.82Z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-blueGray-400 mt-4">
+                  <span class="text-orange-500 mr-2">
+                    <i class="fas fa-arrow-up"></i>
+                  </span>
+                  <span class="whitespace-nowrap">
+                    Since Starting
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="w-full lg:w-6/12 xl:w-3/12 px-4">
+            <div class="relative flex flex-col min-w-0 break-words bg-white rounded mb-6 xl:mb-0 shadow-lg">
+              <div class="flex-auto p-4">
+                <div class="flex flex-wrap">
+                  <div class="relative w-full pr-4 max-w-full flex-grow flex-1">
+                    <h5 class="text-blueGray-400 uppercase font-bold text-xs">
+                      Vehicles
+                    </h5>
+                    <span class="font-semibold text-xl text-blueGray-700">
+                      {{adminData.totalVehicles}}
+                    </span>
+                  </div>
+                  <div class="relative  w-auto pl-4 flex-initial">
+                    <div
+                      class="text-white bg-pink-600 p-3 text-center inline-flex items-center justify-center w-12 h-12 shadow-lg rounded-full bg-lightBlue-500">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="white"
+                        class="bi bi-car-front-fill" viewBox="0 0 16 16">
+                        <path
+                          d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2ZM6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2H6ZM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z" />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <p class="text-sm text-blueGray-400 mt-4">
+                  <span class="text-emerald-500 mr-2">
+                    <i class="fas fa-arrow-up"></i>
+                  </span>
+                  <span class="whitespace-nowrap">
+                    Since start
+                  </span>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="flex flex-row justify-around  bg-purple-200 p-10 ">
+    <div style="width:350px; height:300px;" class="bg-white rounded-xl m-1" >
+      <div style="width:350px; height:300px;" class="bg-white rounded-xl m-1" >
+       
+        <canvas id="canvas1"  class="bg-white rounded-xl">{{chart2}}</canvas>
+      
+      </div>
+      </div>
+      <div style="width:350px; height:300px;" class="bg-white rounded-xl m-1" >
+       
+          <canvas id="canvas"  class="bg-white rounded-xl">{{chart}}</canvas>
+        
+        </div>
+        
+  </div>
+  <div class="px-4 md:px-10 mx-auto w-full bg-blue-600  ">
+    <div class="flex flex-wrap">
+      <!-- New Users -->
+    </div>
+    <div class="flex flex-wrap mt-4">
+      <div class="w-full xl:w-4/12 px-4">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+          <div class="rounded-t mb-0 px-4 py-3 border-0">
+            <div class="flex flex-wrap items-center">
+              <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 class="font-semibold text-base text-blueGray-700">
+                  New users
+                </h3>
+              </div>
+              <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                <button
+                  class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                  type="button" style="transition:all .15s ease" (click)="navigator('admin/users')">
+                  See all
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="block w-full overflow-x-auto">
+            <!-- Projects table -->
+            <table class="items-center w-full bg-transparent border-collapse" *ngIf="adminData.newUsers.length>0">
+              <thead class="thead-light">
+                <tr>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Username
+                  </th>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Email
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of adminData.newUsers">
+                  <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                    {{user.name}}
+                  </th>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {{user.email}}
+                  </td>
+                </tr>
+  
+              </tbody>
+            </table>
+            <div class="h-12 md:h-60 text-center flex justify-center items-center" *ngIf="adminData.newUsers.length<1">
+              <h4>NO NEW USERS THIS MONTH</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full xl:w-4/12 px-4">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+          <div class="rounded-t mb-0 px-4 py-3 border-0">
+            <div class="flex flex-wrap items-center">
+              <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 class="font-semibold text-base text-blueGray-700">
+                  New Vehicles
+                </h3>
+              </div>
+              <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                <button
+                  class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                  type="button" style="transition:all .15s ease" (click)="navigator('admin/vehicles')">
+                  See all
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="block w-full overflow-x-auto">
+            <!-- Projects table -->
+            <table class="items-center w-full bg-transparent border-collapse" *ngIf="adminData.newVehicles.length>0">
+              <thead class="thead-light">
+                <tr>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Brand
+                  </th>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Model
+                  </th>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Register no:</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let vehicle of adminData.newVehicles">
+                  <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                    {{vehicle.brand}}
+                  </th>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {{vehicle.brand}}
+                  </td>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {{vehicle.registration.registrationNumber}}
+                  </td>
+                </tr>
+  
+              </tbody>
+            </table>
+            <div class="h-12 md:h-56 text-center flex justify-center items-center" *ngIf="adminData.newVehicles.length<1">
+              <h4>NO NEW VEHICLES THIS MONTH</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="w-full xl:w-4/12 px-4">
+        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+          <div class="rounded-t mb-0 px-4 py-3 border-0">
+            <div class="flex flex-wrap items-center">
+              <div class="relative w-full px-4 max-w-full flex-grow flex-1">
+                <h3 class="font-semibold text-base text-blueGray-700">
+                  New Rides
+                </h3>
+              </div>
+              <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-right">
+                <button
+                  class="bg-indigo-500 text-white active:bg-indigo-600 text-xs font-bold uppercase px-3 py-1 rounded outline-none focus:outline-none mr-1 mb-1"
+                  type="button" style="transition:all .15s ease" (click)="navigator('admin/rides')">
+                  See all
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="block w-full overflow-x-auto">
+            <!-- Projects table -->
+            <table class="items-center w-full bg-transparent border-collapse" *ngIf="adminData.newRides.length>0">
+              <thead class="thead-light">
+                <tr>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Origin
+                  </th>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Destination
+                  </th>
+                  <th
+                    class="px-6 bg-blueGray-50 text-blueGray-500 align-middle border border-solid border-blueGray-100 py-3 text-xs uppercase border-l-0 border-r-0 whitespace-nowrap font-semibold text-left">
+                    Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let ride of adminData.newRides">
+                  <th class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4 text-left">
+                    {{ride.origin}}
+                  </th>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {{ride.destination}}
+                  </td>
+                  <td class="border-t-0 px-6 align-middle border-l-0 border-r-0 text-xs whitespace-nowrap p-4">
+                    {{ride.departure_date}}
+                  </td>
+                </tr>
+  
+              </tbody>
+            </table>
+            <div class="h-12 md:h-60 text-center flex justify-center items-center" *ngIf="adminData.newRides.length<1">
+              <h4>NO NEW RIDES THIS MONTH</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer class="block py-4">
+      <div class="container mx-auto px-4">
+        <hr class="mb-4 border-b-1 border-blueGray-200" />
+        <div class="flex flex-wrap items-center md:justify-between justify-center">
+  
+        </div>
+      </div>
+    </footer>
+  </div>
+  

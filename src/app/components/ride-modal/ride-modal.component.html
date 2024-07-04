@@ -1,0 +1,31 @@
+<h2 mat-dialog-title class="text-center">RIDE DETAILS</h2>
+<mat-dialog-content class="mat-typography h-60">
+    <table class="min-w-full text-left text-sm font-light">
+        <thead class="border-b font-medium text-black dark:border-neutral-500">
+          <tr>
+            <th scope="col" class="px-6 py-4">#</th>
+            <th scope="col" class="px-6 py-4">User</th>
+            <th scope="col" class="px-6 py-4">Origin</th>
+            <th scope="col" class="px-6 py-4">Destination</th>
+            <th scope="col" class="px-6 py-4">Date</th>
+            <th scope="col" class="px-6 py-4">Seats</th>
+            <th scope="col" class="px-6 py-4">Likes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b dark:border-neutral-500 text-black" *ngFor="let ride of rideData,let i=index">
+            <td class="whitespace-nowrap px-6 py-4 font-medium">{{i+1}}</td>
+            <td class="whitespace-nowrap px-6 py-4 text-uppercase">{{ride.vehicleDetails.userDetails.name }}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{ride.origin}}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{ride.destination}}</td>
+            <td class="whitespace-nowrap px-6 py-4 text-uppercase">{{ride.departure_date.split('T')[0] }}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{ride.available_seats}}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{ride.likes}}</td>
+          </tr>  
+        </tbody>
+      </table>
+   
+</mat-dialog-content>
+<mat-dialog-actions align="center" >
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>

@@ -1,0 +1,86 @@
+<section class="container">
+    <div class="m-2 sm:m-2 md:m-10 lg:m-20">
+        <div class="flex flex-col overflow-x-auto">
+            <div class="sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-x-auto">
+                  <nav class="mt-4" *ngIf="pages > 0">
+                    <ul class="flex flex-row ps-4">
+                      <li *ngFor="let page of pageArray; let i = index;">
+                        <a class="mx-1 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-pink-600 to-pink-400 p-0 text-sm text-white shadow-md shadow-pink-500/20 transition duration-150 ease-in-out"
+                         (click)="pagination(i+1)" >
+                          {{ i + 1 }}
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <table class="min-w-full text-left text-sm font-light">
+                    <thead class="border-b font-medium dark:border-neutral-500">
+                      <tr>
+                        <th scope="col" class="px-6 py-4">#</th>
+                        <th scope="col" class="px-6 py-4">Username</th>
+                        <th scope="col" class="px-6 py-4">Email</th>
+                        <th scope="col" class="px-6 py-4">Phone</th>
+                        <th scope="col" class="px-6 py-4">Role</th>
+                        <th scope="col" class="px-6 py-4">ID</th>
+                        <th scope="col" class="px-6 py-4">LICENSE</th>
+                        <th scope="col" class="px-6 py-4">Block</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b dark:border-neutral-500" *ngFor="let user of usersData,let i=index">
+                        <td class="whitespace-nowrap px-6 py-4 font-medium">{{i+1}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{user.name}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{user.email}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{user.contactNumber}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{user.isAdmin?'Admin':'User'}}</td>
+                        <td class="whitespace-nowrap px-6 py-4 text-center " >
+                            <div *ngIf="user.idPhotos">
+                                <button
+                                    type="button" (click)="viewAndVerify(user,'ID')"
+                                    class="inline-block rounded bg-green-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                                   View
+                                </button>
+                            </div>
+                            <div *ngIf="!user.idPhotos">
+                             -
+                          </div>
+                        </td>
+                        <td class="whitespace-nowrap px-6 py-4 text-center " >
+                          <div *ngIf="user.licencePhotos">
+                              <button
+                                  type="button" (click)="viewAndVerify(user,'License')"
+                                  class="inline-block rounded bg-green-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]">
+                                  View
+                              </button>
+                          </div>
+                          <div *ngIf="!user.licencePhotos">
+                           -
+                        </div>
+                      </td>
+                        <td class="whitespace-nowrap px-6 py-4" >
+                            <div *ngIf="user.isBlocked">
+                              <button
+                              type="button"
+                              class="inline-block rounded bg-orange-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]" (click)="unblockUser(user._id)">
+                              Unblock
+                          </button>
+                            </div>
+                            <div *ngIf="!user.isBlocked">
+                                <button
+                                    type="button"
+                                    class="inline-block rounded bg-red-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]" 
+                                    (click)="blockUser(user._id)">
+                                    Block
+                                </button>
+                            </div>
+                        </td>
+                      </tr>  
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>

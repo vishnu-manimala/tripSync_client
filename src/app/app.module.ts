@@ -18,6 +18,8 @@ import { DeleterideModalComponent } from './components/deleteride-modal/deleteri
 import { CancelModalComponent } from './components/cancel-modal/cancel-modal.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
 import { SuccessComponent } from './components/success/success.component';
+import { ReplyModalComponent } from './components/reply-modal/reply-modal.component';
+import { RideModalComponent } from './components/ride-modal/ride-modal.component';
 
 
 @NgModule({
@@ -32,6 +34,8 @@ import { SuccessComponent } from './components/success/success.component';
     CancelModalComponent,
     ErrorModalComponent,
     SuccessComponent,
+    ReplyModalComponent,
+    RideModalComponent,
    
   ],
   imports: [

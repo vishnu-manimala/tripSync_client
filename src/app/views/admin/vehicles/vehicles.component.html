@@ -1,0 +1,83 @@
+<section class="container">
+    <div class="m-2 sm:m-2 md:m-10 lg:m-20">
+        <div class="flex flex-col overflow-x-auto">
+            <div class="sm:-mx-6 lg:-mx-8">
+              <div class="inline-block min-w-full py-2 sm:px-6 lg:px-8">
+                <div class="overflow-x-auto">
+                  <nav class="mt-4" *ngIf="pages > 0">
+                    <ul class="flex flex-row ps-4">
+                      <li *ngFor="let page of pageArray; let i = index;">
+                        <a class="mx-1 flex h-6 w-6 items-center justify-center rounded-full bg-gradient-to-r from-pink-600 to-pink-400 p-0 text-sm text-white shadow-md shadow-pink-500/20 transition duration-150 ease-in-out"
+                         (click)="pagination(i+1)" >
+                          {{ i + 1 }}
+                        </a>
+                      </li>
+                    </ul>
+                  </nav>
+                  <table class="min-w-full text-left text-sm font-light">
+                    <thead class="border-b font-medium dark:border-neutral-500">
+                      <tr>
+                        <th scope="col" class="px-6 py-4">#</th>
+                        <th scope="col" class="px-6 py-4">Brand</th>
+                        <th scope="col" class="px-6 py-4">Model</th>
+                        <th scope="col" class="px-6 py-4">Registration Number</th>
+                        <th scope="col" class="px-6 py-4">Expiry Date</th>
+                        <th scope="col" class="px-6 py-4">Insurance Company</th>
+                        <th scope="col" class="px-6 py-4">Expiry Date</th>
+                        <th scope="col" class="px-6 py-4">Verify</th>
+                        <th scope="col" class="px-6 py-4">Block</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr class="border-b dark:border-neutral-500" *ngFor="let vehicle of vehicleData,let i=index">
+                        <td class="whitespace-nowrap px-6 py-4 font-medium">{{i+1}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{vehicle.brand}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{vehicle.model}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{vehicle.registration.registrationNumber}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{vehicle.registration.expiryDate.split('T')[0]}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{vehicle.insurance.insuranceCompany | uppercase}}</td>
+                        <td class="whitespace-nowrap px-6 py-4">{{vehicle.insurance.expiryDate.split('T')[0]}}</td>
+                        <td class="whitespace-nowrap px-6 py-4" >
+                          <div *ngIf="vehicle.isVerified" class="text-center">
+                            <div class="d-flex align-items-center justify-content-center text-center">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="green" class="bi bi-patch-check-fill" viewBox="0 0 16 16">
+                                <path d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+                              </svg>
+                            </div>
+                          </div>
+                          <div *ngIf="!vehicle.isVerified">
+                              <button
+                                  type="button"
+                                  class="inline-block rounded bg-red-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]" 
+                                  (click)="verify(vehicle._id)">
+                                  Verify
+                              </button>
+                          </div>
+                      </td>
+                        <td class="whitespace-nowrap px-6 py-4" >
+                            <div *ngIf="vehicle.isBlocked">
+                              <button
+                              type="button"
+                              class="inline-block rounded bg-orange-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]" 
+                              (click)="unblock(vehicle._id)">
+                              Unblock
+                          </button>
+                            </div>
+                            <div *ngIf="!vehicle.isBlocked">
+                                <button
+                                    type="button"
+                                    class="inline-block rounded bg-red-900 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]" 
+                                    (click)="block(vehicle._id)">
+                                    Block
+                                </button>
+                            </div>
+                        </td>
+                      </tr>  
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+    </div>
+</section>

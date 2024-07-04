@@ -1,0 +1,25 @@
+<h2 mat-dialog-title class="text-center">REPLYS</h2>
+<mat-dialog-content class="mat-typography h-60">
+    <table class="min-w-full text-left text-sm font-light">
+        <thead class="border-b font-medium text-black dark:border-neutral-500">
+          <tr>
+            <th scope="col" class="px-6 py-4">#</th>
+            <th scope="col" class="px-6 py-4">Replied User</th>
+            <th scope="col" class="px-6 py-4">Reply</th>
+            <th scope="col" class="px-6 py-4">Likes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b dark:border-neutral-500 text-black" *ngFor="let reply of data,let i=index">
+            <td class="whitespace-nowrap px-6 py-4 font-medium">{{i+1}}</td>
+            <td class="whitespace-nowrap px-6 py-4 text-uppercase">{{reply.replyUserName }}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{reply.replyComment}}</td>
+            <td class="whitespace-nowrap px-6 py-4">{{reply.replyLikes}}</td>
+          </tr>  
+        </tbody>
+      </table>
+   
+</mat-dialog-content>
+<mat-dialog-actions align="center" >
+    <button mat-button mat-dialog-close>Close</button>
+  </mat-dialog-actions>

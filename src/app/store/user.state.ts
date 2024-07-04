@@ -1,16 +1,29 @@
-import { UserRole } from "../models/auth.model";
-import { UserState } from "../models/store.model";
+import { UsersResponse } from "../models/users_response.model";
+export interface State {
+  isLogged : boolean;
+  user : UsersResponse
+}
 
-const initialState: UserState = {
-    username: '',
-    phone: '',
-    verified: {
-      isIdVerified: false,
-      isPhoneVerified: false,
-      isEmailVerified: false,
-    },
-    isLoggedIn: false,
-    userRole: UserRole.User,
+export const initialState : State = {
+  isLogged : false,
+  user :{
+     _id:"",
+    name :"",
+    email:"",
+    contactNumber:0,
+    profileImage:[],
+    createdAt:new Date('00.00.0000'),
+    isIdVerified:false,
+    islicenceVerified:false,
+    isPhoneVerified:false,
+    isEmailVerified:false,
+    isAdmin:false,
     isBlocked:false,
-    token: '',
-  };
+    isFollower:false,
+    isFollowing:false,
+    following:[],
+    followers:[],
+    idPhotos:[],
+    licencePhotos:[]
+}
+}

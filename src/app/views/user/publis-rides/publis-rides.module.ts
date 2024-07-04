@@ -27,6 +27,7 @@ import { PublishVehicleComponent } from './publish-vehicle/publish-vehicle.compo
     PublishSuccessComponent,
     PublishVehicleComponent
   ],
+  exports: [AutocompleteComponent],
   imports: [
     CommonModule,
     PublisRidesRoutingModule

@@ -17,6 +17,7 @@ import { MatCardModule } from '@angular/material/card';
 import { DeleterideModalComponent } from './components/deleteride-modal/deleteride-modal.component';
 import { CancelModalComponent } from './components/cancel-modal/cancel-modal.component';
 import { ErrorModalComponent } from './components/error-modal/error-modal.component';
+import { SuccessComponent } from './components/success/success.component';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ErrorModalComponent } from './components/error-modal/error-modal.compon
     DeleterideModalComponent,
     CancelModalComponent,
     ErrorModalComponent,
+    SuccessComponent,
    
   ],
   imports: [

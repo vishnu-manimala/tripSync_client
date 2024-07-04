@@ -1,14 +1,14 @@
 export interface Registration {
     _id:string;
     registrationNumber: string;
-    expiryDate: Date;
+    expiryDate: string;
 };
 
 export interface Insurance {
     _id:string;
     insuranceCompany: string;
     policyNumber: string;
-    expiryDate: Date;
+    expiryDate: string;
 };
 
 export interface RatingAndReview {
@@ -27,7 +27,7 @@ export interface Vehicle {
     color: string;
     registration: Registration;
     insurance: Insurance;
-    VehiclePhotos: string[]; // Array of URLs or paths to vehicle photos
+    VehiclePhotos: string[]; 
     ratingAndReview: RatingAndReview;
     isBlocked: boolean;
     isVerified: boolean;
@@ -39,6 +39,13 @@ export interface Vehicle {
 export interface Vehicleresponse {
     status: string;
     message: string;
-    data?: Vehicle;
+    data?: Vehicle[];
+    token?: string;
+}
+
+export interface SingleVehicleResponse {
+    status: string;
+    message: string;
+    data: Vehicle;
     token?: string;
 }

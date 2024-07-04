@@ -8,6 +8,10 @@ import { PublishPaymentComponent } from './publish-payment/publish-payment.compo
 import { PublishRideComponent } from './publish-ride/publish-ride.component';
 import { PublishRideListComponent } from './publish-ride-list/publish-ride-list.component';
 import { RequestModalComponent } from './request-modal/request-modal.component';
+import { PublishRouteComponent } from './publish-route/publish-route.component';
+import { PublishSettingComponent } from './publish-setting/publish-setting.component';
+import { PublishSuccessComponent } from './publish-success/publish-success.component';
+import { PublishVehicleComponent } from './publish-vehicle/publish-vehicle.component';
 
 
 @NgModule({
@@ -17,7 +21,11 @@ import { RequestModalComponent } from './request-modal/request-modal.component';
     PublishPaymentComponent,
     PublishRideComponent,
     PublishRideListComponent,
-    RequestModalComponent
+    RequestModalComponent,
+    PublishRouteComponent,
+    PublishSettingComponent,
+    PublishSuccessComponent,
+    PublishVehicleComponent
   ],
   imports: [
     CommonModule,

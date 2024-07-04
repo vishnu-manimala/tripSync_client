@@ -1,0 +1,59 @@
+<div class=" mx-auto ">
+    <!-- Section: Design Block -->
+    <section class="text-center  md:text-left">
+        <div
+            class="block rounded-lg bg-white  ">
+            <div class="flex flex-wrap items-center">
+                <div class="w-full h-screen shrink-0 grow-0 basis-auto lg:w-full xl:w-full">
+                    <div class=" py-12 md:px-12">
+
+                        <div class="flex flex-wrap -m-1">
+                            <div class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 p-1 "
+                                *ngFor="let item of vehicleData">
+
+                                <div
+                                    class="relative overflow-hidden bg-cover bg-no-repeat h-40 sm:h-48 md:h-40 lg:h-40 xl:h-40">
+                                    <img class="rounded-t-lg h-full w-full object-cover"
+                                        [src]="'http://localhost:3001/uploads/'+item.VehiclePhotos[0]" alt="" />
+                                    <div
+                                        class="absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition duration-300 ease-in-out hover:opacity-100">
+                                    </div>
+                                </div>
+                                <p class="mb-2 text-sm font-medium leading-tight text-neutral-800 ">
+                                    Register No: {{item.registration.registrationNumber}}
+                                </p>
+                                <p class="mb-4 text-base text-neutral-600 ">
+                                    Brand: {{item.brand | uppercase}}<br>
+                                    Model: {{item.model | uppercase}}
+                                </p>
+
+                                <button type="button"
+                                    class="inline-block rounded bg-blue-600 px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal hover:bg-slate-500 active:bg-green-500 text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                    data-te-ripple-init data-te-ripple-color="light" (click)="selectedVehicle(item)">
+                                    Select
+                                </button>
+                            </div>
+
+                        </div>
+                        <div class="flex flex-row justify-center">
+                            <button type="button"
+                                class="inline-block rounded bg-blue-600 px-6 ml-40 mt-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                data-te-ripple-init data-te-ripple-color="light" (click)="submitVehicle()">
+                                Submit
+                            </button>
+                            <button type="button" href="#"
+                                class="inline-block rounded bg-blue-600 px-6 ml-2 mt-2 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                                data-te-ripple-init data-te-ripple-color="light" (click)="cancel()">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <!-- Section: Design Block -->
+</div>
+<!-- Container for demo purpose -->

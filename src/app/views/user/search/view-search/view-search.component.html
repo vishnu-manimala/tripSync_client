@@ -1,0 +1,331 @@
+<div *ngIf="searchData.length>0">
+    <article class="bg-white hover:bg-gray-100 mt-3 transition duration-350 ease-in-out" *ngFor="let data of searchData">
+      <div class="flex flex-shrink-0 p-4 pb-0">
+          <div class="flex items-center">
+            <div>
+              <img class="inline-block h-10 w-10 rounded-full"
+                [src]="picUrl+data.vehicleDetails.userDetails.profileImage[data.vehicleDetails.userDetails.profileImage.length-1]"
+                alt="" *ngIf="data.vehicleDetails.userDetails.profileImage">
+              <img class="inline-block h-10 w-10 rounded-full"
+                src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png"
+                alt="" *ngIf="!data.vehicleDetails.userDetails.profileImage">
+            </div>
+            <div class="ml-3">
+              <p class="text-base leading-6 font-medium text-blue-950"
+                (click)="navigator(data.vehicleDetails.userDetails._id)">
+                {{data.vehicleDetails.userDetails.name}}
+                <span
+                  class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
+                  {{data.vehicleDetails.userDetails.email}}
+                </span>
+              </p>
+            </div>
+          </div>
+      </div>
+      <div
+        class="m-0 md:m-2 flex flex-row  justify-center  rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.09),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        <div class=" overflow-hidden bg-cover bg-no-repeat w-40 h-40 text-center " data-te-ripple-init
+          data-te-ripple-color="light">
+          <img class="rounded-t-lg mt-2"
+            [src]="picUrl+data.vehicleDetails.VehiclePhotos[data.vehicleDetails.VehiclePhotos.length-1]"
+            alt="" />
+        </div>
+        <div class="p-6 flex flex-col">
+          
+          <span class="mb-2 leading-tight text-center text-neutral-800">
+            VEHICLE DETAILS
+          </span>
+          <div class="bg-gray-200 w-80 p-3 m-1 rounded-xl flex flex-row ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-car-front-fill m-1 text-blue-600" viewBox="0 0 16 16">
+              <path d="M2.52 3.515A2.5 2.5 0 0 1 4.82 2h6.362c1 0 1.904.596 2.298 1.515l.792 1.848c.075.175.21.319.38.404.5.25.855.715.965 1.262l.335 1.679c.033.161.049.325.049.49v.413c0 .814-.39 1.543-1 1.997V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.338c-1.292.048-2.745.088-4 .088s-2.708-.04-4-.088V13.5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1-.5-.5v-1.892c-.61-.454-1-1.183-1-1.997v-.413a2.5 2.5 0 0 1 .049-.49l.335-1.68c.11-.546.465-1.012.964-1.261a.807.807 0 0 0 .381-.404l.792-1.848ZM3 10a1 1 0 1 0 0-2 1 1 0 0 0 0 2m10 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2M6 8a1 1 0 0 0 0 2h4a1 1 0 1 0 0-2zM2.906 5.189a.51.51 0 0 0 .497.731c.91-.073 3.35-.17 4.597-.17 1.247 0 3.688.097 4.597.17a.51.51 0 0 0 .497-.731l-.956-1.913A.5.5 0 0 0 11.691 3H4.309a.5.5 0 0 0-.447.276L2.906 5.19Z"/>
+            </svg>
+            <span class="m-1 text-gray-900">BRAND : {{data.vehicleDetails.brand}}</span>
+          </div>
+          <div class="bg-gray-200 w-80 p-3 m-1 rounded-xl flex flex-row ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-sliders m-1 text-blue-600" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M11.5 2a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M9.05 3a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0V3zM4.5 7a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3M2.05 8a2.5 2.5 0 0 1 4.9 0H16v1H6.95a2.5 2.5 0 0 1-4.9 0H0V8zm9.45 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3m-2.45 1a2.5 2.5 0 0 1 4.9 0H16v1h-2.05a2.5 2.5 0 0 1-4.9 0H0v-1z"/>
+            </svg>
+            <span class="m-1 text-gray-900">{{data.vehicleDetails.model }}</span>
+          </div>
+          <div class="bg-gray-200 w-80 p-3 m-1 rounded-xl flex flex-row ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-r-square-fill m-1 text-blue-600" viewBox="0 0 16 16">
+              <path d="M6.835 5.092v2.777h1.549c.995 0 1.573-.463 1.573-1.36 0-.913-.596-1.417-1.537-1.417z"/>
+              <path d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm3.5 4.002h3.11c1.71 0 2.741.973 2.741 2.46 0 1.138-.667 1.94-1.495 2.24L11.5 12H9.98L8.52 8.924H6.836V12H5.5z"/>
+            </svg>
+            <span class="m-1 text-gray-900">REG_NO : {{data.vehicleDetails.registration.registrationNumber }}</span>
+          </div>
+  
+        </div>
+        <div class="p-6 flex flex-col">
+          <span class="mb-2 leading-tight text-neutral-800 text-center">
+            RIDE DETAILS
+          </span>
+          <div class="bg-gray-200 w-80 p-3 m-1 rounded-xl flex flex-row ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-geo-alt-fill m-1 text-blue-600" viewBox="0 0 16 16">
+              <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6"/>
+            </svg>
+            <span class="m-1 text-gray-900">{{data.origin| uppercase}}</span>
+          </div>
+          <div class="bg-gray-200 w-80 p-3 m-1 rounded-xl flex flex-row ">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-geo-fill m-1 text-blue-600" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411"/>
+            </svg>
+            <span class="m-1 text-gray-900">{{data.destination| uppercase}}</span>
+          </div>
+          <div class="bg-gray-200 w-80 p-3 m-1 rounded-xl flex flex-row justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-calendar-check-fill m-1 text-blue-600" viewBox="0 0 16 16">
+              <path d="M4 .5a.5.5 0 0 0-1 0V1H2a2 2 0 0 0-2 2v1h16V3a2 2 0 0 0-2-2h-1V.5a.5.5 0 0 0-1 0V1H4zM16 14V5H0v9a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2m-5.146-5.146-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708.708z"/>
+            </svg>
+            <span class="m-1 text-gray-900">{{data.departure_date.split('T')[0]}}</span>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="data.user_id !== userId">
+      <div *ngIf="!requested">
+        <div class="m-2 flex flex-col text-center ">
+          <button type="submit" (click)="requestRide(data._id,data.user_id)"
+            class="bg-blue-600 hover:bg-gray-700 mt-5 w-1/4 rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            Request
+          </button>
+        </div>
+      </div>
+      <div [ngSwitch]="requestStatus">
+        <div class="m-2 flex flex-col text-center " *ngSwitchCase="'pending'">
+          <button type="submit" (click)="requestRide(data._id,data.user_id)"
+            class="bg-blue-600 hover:bg-gray-700 mt-5 w-1/4 rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            Request
+          </button>
+        </div>
+        <div class="m-2 flex flex-col text-center " *ngSwitchCase="'accepted'">
+          <button type="submit" (click)="payNow(data._id,data.user_id,requestId)"
+            class="bg-blue-600 hover:bg-gray-700 mt-5 w-1/4 rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            PAY NOW
+          </button>
+        </div>
+        <div class="m-2 flex flex-col text-center " *ngSwitchCase="'rejected'">
+          <button type="submit" (click)="requestRide(data._id,data.user_id)"
+            class="bg-red-600 hover:bg-gray-700 mt-5 w-1/4 rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white " disabled>
+            REJECTED
+          </button>
+        </div>
+        <div class="m-2 flex " *ngSwitchCase="'cancelled'">
+          <div class="pl-3 pr-3 pt-7 pb-2">
+            <p>Status : {{requestStatus | uppercase}}</p>
+          </div>
+          <button type="submit" (click)="requestRide(data._id,data.user_id)"
+            class="bg-blue-600 hover:bg-gray-700 mt-5 w-1/4 rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            Request
+          </button>
+  
+        </div>
+        <div class="m-2 flex " *ngSwitchCase="'requested'">
+          <button type="button" (click)="cancelRequest(data._id,data.user_id,'cancel')"
+            class="bg-blue-600 hover:bg-gray-700 mt-5  rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            Cancel
+          </button>
+        </div>
+        <div class="m-2 flex " *ngSwitchCase="'paid'">
+          <button type="button" (click)="cancelRequest(data._id,data.user_id,'paid')"
+            class="bg-blue-600 hover:bg-gray-700 mt-5  rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            Cancel
+          </button>
+  
+        </div>
+        <div class="m-2 flex " *ngSwitchCase="'payment returned'">
+          <div class="pl-3 pr-3 pt-7 pb-2">
+            <p>Status : {{requestStatus | uppercase}}</p>
+          </div>
+          <button type="submit" (click)="requestRide(data._id,data.user_id)"
+            class="bg-blue-600 hover:bg-gray-700 mt-5 w-1/4 rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            Request
+          </button>
+  
+        </div>
+      </div>
+      </div>
+      <div class="flex items-center py-4 ml-10">
+  
+        <div
+          class="flex-1 flex items-center text-blue-600 text-xs  hover:text-red-600 transition duration-350 ease-in-out"
+          (click)="likeRide(data._id,userId)">
+          <span *ngIf="data.likedUsers.length>0">{{data.likes}}</span>
+          <svg viewBox="0 0 24 24" fill="red" class="w-5 h-5 mr-2" *ngIf="data.likedUsers.includes(userId)">
+            <g>
+              <path
+                d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z">
+              </path>
+            </g>
+          </svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" class="w-5 h-5 mr-2" *ngIf="!data.likedUsers.includes(userId)">
+            <g>
+              <path
+                d="M12 21.638h-.014C9.403 21.59 1.95 14.856 1.95 8.478c0-3.064 2.525-5.754 5.403-5.754 2.29 0 3.83 1.58 4.646 2.73.814-1.148 2.354-2.73 4.645-2.73 2.88 0 5.404 2.69 5.404 5.755 0 6.376-7.454 13.11-10.037 13.157H12zM7.354 4.225c-2.08 0-3.903 1.988-3.903 4.255 0 5.74 7.034 11.596 8.55 11.658 1.518-.062 8.55-5.917 8.55-11.658 0-2.267-1.823-4.255-3.903-4.255-2.528 0-3.94 2.936-3.952 2.965-.23.562-1.156.562-1.387 0-.014-.03-1.425-2.965-3.954-2.965z">
+              </path>
+            </g>
+          </svg>
+        </div>
+        <div
+          class="flex-1 flex items-center text-blue-600 text-xs  hover:text-blue-400 transition duration-350 ease-in-out"  *ngIf="data.user_id !== userId"
+          (click)="chat(data.vehicleDetails.userDetails.name,data.vehicleDetails.userDetails.email,data.vehicleDetails.userDetails._id,data.vehicleDetails.userDetails.profileImage[data.vehicleDetails.userDetails.profileImage.length-1])">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-wechat"
+            viewBox="0 0 16 16">
+            <path
+              d="M11.176 14.429c-2.665 0-4.826-1.8-4.826-4.018 0-2.22 2.159-4.02 4.824-4.02S16 8.191 16 10.411c0 1.21-.65 2.301-1.666 3.036a.324.324 0 0 0-.12.366l.218.81a.616.616 0 0 1 .029.117.166.166 0 0 1-.162.162.177.177 0 0 1-.092-.03l-1.057-.61a.519.519 0 0 0-.256-.074.509.509 0 0 0-.142.021 5.668 5.668 0 0 1-1.576.22ZM9.064 9.542a.647.647 0 1 0 .557-1 .645.645 0 0 0-.646.647.615.615 0 0 0 .09.353Zm3.232.001a.646.646 0 1 0 .546-1 .645.645 0 0 0-.644.644.627.627 0 0 0 .098.356Z" />
+            <path
+              d="M0 6.826c0 1.455.781 2.765 2.001 3.656a.385.385 0 0 1 .143.439l-.161.6-.1.373a.499.499 0 0 0-.032.14.192.192 0 0 0 .193.193c.039 0 .077-.01.111-.029l1.268-.733a.622.622 0 0 1 .308-.088c.058 0 .116.009.171.025a6.83 6.83 0 0 0 1.625.26 4.45 4.45 0 0 1-.177-1.251c0-2.936 2.785-5.02 5.824-5.02.05 0 .1 0 .15.002C10.587 3.429 8.392 2 5.796 2 2.596 2 0 4.16 0 6.826Zm4.632-1.555a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Zm3.875 0a.77.77 0 1 1-1.54 0 .77.77 0 0 1 1.54 0Z" />
+          </svg>
+        </div>
+        <div
+          class="flex-1 flex items-center text-blue-600 text-xs  hover:text-blue-400 transition duration-350 ease-in-out"
+          (click)="loadReview(data._id)">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+            class="bi bi-chat-left-text-fill" viewBox="0 0 16 16">
+            <path
+              d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793zm3.5 1a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h9a.5.5 0 0 0 0-1zm0 2.5a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1z" />
+          </svg>
+        </div>
+      </div>
+      <hr class="border-cyan-800">
+      <div *ngIf="reviewSection">
+        <div class="flex flex-row mx-auto items-center justify-center shadow-lg px-3  mb-4 w-full  bg-white">
+          <div class="flex  p-4 pb-0">
+            <div class="items-center">
+              <div>
+                <img class="inline-block h-8 w-9 rounded-full"
+                  [src]="picUrl+userdata.profileImage[userdata.profileImage.length-1]" alt=""
+                  *ngIf="data.vehicleDetails.userDetails.profileImage">
+                <img class="inline-block h-8 w-9 rounded-full"
+                  src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png"
+                  alt="" *ngIf="!data.vehicleDetails.userDetails.profileImage">
+              </div>
+            </div>
+          </div>
+          <div class="w-full  bg-white rounded-lg px-4 pt-5">
+            <div class="relative mb-3" data-te-input-wrapper-init>
+              <input
+                class="peer block min-h-[auto] w-full py-2 rounded-xl border border-cyan-500 bg-transparent px-3  leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none "
+                id="exampleFormControlTextarea1" rows="3" [(ngModel)]="review" placeholder="Write your review">
+  
+            </div>
+          </div>
+          <button type="submit" (click)="saveReview(data._id,userId)"
+            class="bg-blue-600 hover:bg-gray-700  w-auto rounded pl-3 pr-3 pt-2 pb-2 text-white ">
+            Post
+          </button>
+        </div>
+        <!-- comment -->
+        <div *ngIf="reviewData.length>0">
+          <div class="flex flex-row mx-auto  justify-center  px-3  mb-4 w-full" *ngFor="let review of reviewData">
+            <!-- image -->
+            <div class="flex  p-1 ">
+              <div>
+                <div>
+                  <img class="inline-block h-8 w-9 rounded-full"
+                    [src]="picUrl+review.profileImage" alt=""
+                    *ngIf="data.vehicleDetails.userDetails.profileImage">
+                  <img class="inline-block h-8 w-9 rounded-full"
+                    src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png"
+                    alt="" *ngIf="!data.vehicleDetails.userDetails.profileImage">
+                </div>
+              </div>
+            </div>
+            <div class="w-full  bg-slate-200 rounded-lg ml-2 px-4 pt-1 pb-2">
+              <div >
+                <div class="flex flex-row justify-between hover:text-gray-700 p-3"  >
+                  <button type="button" (click)="navigator(review.userId)">{{review.username | uppercase}}</button>
+                  <button type="button" *ngIf="review.userId === userId" (click)="deleteReview(review._id)">
+                      <i class="fa-solid fa-trash text-red-600"></i>
+                  </button>
+              </div>
+                <div class="pt-2 pl-3" >
+                  {{review.message}}
+                </div>
+                <div class="w-full flex flex-row mt-5">
+                  <button class="bg-slate-300 px-1 py-1" [ngClass]="{'text-blue-500': review.likedUsers.includes(userId)}"
+                    (click)="reviewLike(userId,review._id)">Like</button>
+                  <div *ngIf="review.likedUsers.length>0" class=" p-1 pl-3">
+                    <span class="text-green-600"> {{ review.likes}} </span><i class="fa-regular fa-thumbs-up "></i>
+                  </div>
+                  <span class="m-1"> | </span>
+                  <button class="bg-slate-300 px-1 py-1" (click)="replyView(review._id)">reply</button>
+                </div>
+               
+              </div>
+             
+              <!-- reply -->
+              <div>
+                <div *ngIf="replySection === review._id" >
+                  <div class="flex flex-row mx-auto items-center justify-center shadow-lg rounded-lg px-3  mb-4 w-full  bg-white">
+                    <div class="flex  p-4 pb-0">
+                      <div class="items-center">
+                        <div>
+                          <img class="inline-block h-8 w-9 rounded-full"
+                            [src]="picUrl+userdata.profileImage[userdata.profileImage.length-1]"
+                            alt="" *ngIf="data.vehicleDetails.userDetails.profileImage">
+                          <img class="inline-block h-8 w-9 rounded-full"
+                            src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png"
+                            alt="" *ngIf="!data.vehicleDetails.userDetails.profileImage">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-full  bg-white rounded-lg px-4 pt-5">
+                      <div class="relative mb-3" data-te-input-wrapper-init>
+                        <input
+                          class="peer block min-h-[auto] w-full py-2 rounded-xl border border-cyan-500 bg-transparent px-3  leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none "
+                          id="exampleFormControlTextarea1" rows="3" [(ngModel)]="reply" placeholder="Write your review">
+  
+                      </div>
+                    </div>
+                    <button type="submit" (click)="saveReply(review._id,userId)"
+                      class="bg-blue-600 hover:bg-gray-700  w-auto rounded pl-3 pr-3 pt-2 pb-2 text-white ">
+                      Post
+                    </button>
+                  </div>
+                </div>
+                <div *ngIf="review.reply.length>0">
+                  <div class="flex flex-row mx-auto  justify-center mt-2 mb-1 px-3 mb-4 w-full rounded-lg bg-white"
+                    *ngFor="let comment of review.reply">
+                    <!-- image -->
+                    <div class="flex  p-1 ">
+                      <div>
+                        <div>
+                          <img class="inline-block h-8 w-9 rounded-full"
+                            [src]="picUrl+comment.replyProfileImage" alt=""
+                            *ngIf="data.vehicleDetails.userDetails.profileImage">
+                          <img class="inline-block h-8 w-9 rounded-full"
+                            src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png"
+                            alt="" *ngIf="!data.vehicleDetails.userDetails.profileImage">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="w-full  rounded-lg ml-2 px-4 pt-1 pb-2">
+                      <div>
+                        <div class="flex flex-row justify-between" >
+                          <button type="button" (click)="navigator(comment.replyUserId)">{{comment.replyUserName | uppercase}}</button>
+                          <button type="button" *ngIf="comment.replyUserId === userId" (click)="deleteReply(comment.replyId)">
+                            <i class="fa-solid fa-trash text-red-600"></i>
+                        </button>
+                        </div>
+                        <div class="text-gray-500">
+                          {{comment.replyComment}}
+                        </div>
+                        <div class="w-full flex flex-row mt-2">
+                          <button class="bg-slate-300 px-1 py-1"
+                            [ngClass]="{'text-blue-500': comment.likedUsers.includes(userId)}"
+                            (click)="replyLike(userId,comment.replyId)">Like</button>
+                            <div *ngIf="comment.likedUsers.length>0" class=" p-1 pl-3">
+                                 {{comment.replyLikes}}<i class="fa-regular fa-thumbs-up p-1 pl-3 text-blue-700"
+                            ></i>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>

@@ -1,1 +1,235 @@
-<p>accounts works!</p>
+<main class="profile-page">
+    <section class=" py-16 bg-blue-100">
+      <div class="container mx-auto px-4">
+        <div class=" flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-xl rounded-lg ">
+          <div class="px-6">
+            <div class="flex flex-wrap justify-center">
+              <div class="w-full lg:w-3/12 px-4 lg:order-2 flex justify-center">
+                <div class="relative">
+                  <img alt="..." *ngIf="userData.profileImage[userData.profileImage.length-1]"
+                    [src]="picUrl+userData.profileImage[userData.profileImage.length-1]"
+                    class="shadow-xl rounded-full h-36 w-40 align-middle border-none absolute -m-16  md:-m-16 md:-ml-20 lg:-ml-16"
+                    style="max-width: 120px; " />
+                    <img alt="..." *ngIf="!userData.profileImage[userData.profileImage.length-1]"
+                    src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png"
+                    class="shadow-xl rounded-full h-36 w-40 align-middle border-none absolute -m-16  md:-m-16 md:-ml-20 lg:-ml-16"
+                    style="max-width: 120px; " />
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 lg:order-3 lg:text-right lg:self-center">
+                <div class="py-6 px-3 md:mt-10 sm:mt-0">
+                  <!-- <button
+                                      class="bg-pink-500 active:bg-pink-600 uppercase text-white font-bold hover:shadow-md shadow text-xs px-4 py-2 rounded outline-none focus:outline-none sm:mr-2 mb-1"
+                                      type="button" style="transition: all 0.15s ease 0s;">
+                                      Requests
+                                  </button> -->
+                </div>
+              </div>
+              <div class="w-full lg:w-4/12 px-4 lg:order-1">
+                <div class="flex justify-center py-4 lg:pt-4 pt-8">
+                  <div class="mr-4 p-3 text-center">
+                    <span
+                      class="text-xl font-bold block uppercase tracking-wide text-gray-700">{{userData.followers?.length}}</span><span
+                      class="text-sm text-gray-500">Followers</span>
+                  </div>
+                  <div class="mr-4 p-3 text-center">
+                    <span
+                      class="text-xl font-bold block uppercase tracking-wide text-gray-700">{{publishedRideCount}}</span><span
+                      class="text-sm text-gray-500">Published rides</span>
+                  </div>
+                  <div class="lg:mr-4 p-3 text-center">
+                    <span
+                      class="text-xl font-bold block uppercase tracking-wide text-gray-700">{{userData.following?.length}}</span><span
+                      class="text-sm text-gray-500">Following</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="text-center mt-2 md:mt-1">
+              <div class="flex flex-row justify-center">
+                <h3 class="text-2xl font-semibold leading-normal mb-2 text-gray-800 mb-2">
+                  {{userData.name | uppercase}}
+                </h3>
+                <i class="fa fa-times-circle m-2" aria-hidden="true" (click)="editName()" *ngIf="editname"></i>
+  
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                  class="bi bi-pencil-fill ml-3 mt-1" viewBox="0 0 16 16" (click)="editName()" *ngIf="!editname">
+                  <path
+                    d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z" />
+                </svg>
+              </div>
+              <div class="flex flex-row justify-center w-full" *ngIf="editname">
+                <div class="relative mb-4 flex flex-wrap items-stretch">
+                  <input type="text"
+                    class="relative m-0 -mr-0.5 block w-4/5 min-w-0 flex-auto rounded-l border border-solid border-neutral-300 bg-transparent bg-clip-padding px-3 py-[0.25rem] text-base font-normal leading-[1.6] text-neutral-700 outline-none transition duration-200 ease-in-out focus:z-[3] focus:border-primary focus:text-neutral-700 focus:shadow-[inset_0_0_0_1px_rgb(59,113,202)] focus:outline-none dark:border-neutral-600 dark:text-gray-600 dark:placeholder:text-gray-600 dark:focus:border-primary"
+                    placeholder="Enter Name" aria-label="Recipient's username" aria-describedby="button-addon2"
+                    [(ngModel)]="name" />
+                  <button
+                    class="z-[2] w-1/5 inline-block rounded-r bg-blue-600  text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:z-[3] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+                    data-te-ripple-init type="button" id="button-addon2" (click)="saveName()">
+                    Save
+                  </button>
+                </div>
+              </div>
+              <div class="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
+  
+                {{userData.email | uppercase}}<i class="fa fa-check-square ml-1 text-blue-500" aria-hidden="true" *ngIf="userData.isEmailVerified"></i>
+              </div>
+              <div class="text-sm leading-normal mt-0 mb-2 text-gray-500 font-bold uppercase">
+  
+                {{userData.contactNumber }}<i class="fa fa-check-square ml-1 text-blue-500" aria-hidden="true" *ngIf="userData.isPhoneVerified"></i>
+              </div>
+              <div
+                class="block rounded-lg mt-3 text-blue-600 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+                <div class="border-b-2 border-neutral-100 px-6 py-3  ">
+                  <button type="button" class="bg-blue-500 p-2 rounded-xl ps-2 pe-2 text-white" (click)="uploadPic()"
+                    *ngIf="!propic">ADD PROFILE PICTURE</button>
+                </div>
+                <div class="p-6 flex flex-col items-center" *ngIf="propic">
+                  <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+  
+                    <div class=" text-center mb-6 " data-te-input-wrapper-init>
+  
+  
+                      <input
+                        class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                        type="file" accept="image/*" name="files" (change)="onFileSelected($event)"
+                        id="formFileMultiple" />
+                    </div>
+                    <!--Submit button-->
+                    <button type="submit"
+                      class="bg-blue-500 m-1    hover:bg-gray-700 p-2 rounded inline-block rounded    uppercase leading-normal text-white "
+                      data-te-ripple-init data-te-ripple-color="light">
+                      Submit
+                    </button>
+                    <button type="submit"
+                      class="bg-red-500 m-1  hover:bg-gray-700 p-2  rounded inline-block rounded    uppercase leading-normal text-white "
+                      data-te-ripple-init (click)="uploadPic()" data-te-ripple-color="light">
+                      Cancel
+                    </button>
+                  </form>
+                </div>
+              </div>
+              <div
+                class="block rounded-lg mt-2 text-blue-600 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+                <div class="border-b-2 border-neutral-100 px-6 py-3  ">
+                  Validation details
+                </div>
+                <h3>ID</h3><br>
+                <div class="p-6" *ngIf="userData.isIdVerified || userData.idPhotos.length>0">
+                  <div class="p-2 flex  justify-center w-full" >
+                 
+                    <img alt="..."
+                    [src]="picUrl+userData.idPhotos[userData.idPhotos.length-1]"
+                    class="shadow-xl  h-36 w-40 align-middle border-none "
+                    style="max-width: 120px; " />
+                  </div><br>
+                  <h5 class="mb-2 m-2 w-full text-xl font-medium leading-tight "  *ngIf="userData.isIdVerified">
+                    ID ADDED & VERIFIED
+                  </h5>
+              
+                </div>
+                <div class="p-2 flex flex-row justify-center" *ngIf="userData.idPhotos.length<1">
+                  <button type="submit"
+                    class="bg-blue-500  text-gray-800  hover:bg-gray-700 p-2  rounded inline-block rounded    uppercase leading-normal text-white "
+                    data-te-ripple-init (click)="uploadID()" data-te-ripple-color="light">
+  
+                    Upload ID
+                  </button>
+                </div>
+                <div class="p-2 flex flex-col items-center" *ngIf="IDupload">
+                  <form (ngSubmit)="onIdSubmit()" enctype="multipart/form-data">
+                    <div class=" text-center mb-2 " data-te-input-wrapper-init>
+                      <label>Select your id </label>
+                      <select data-te-select-init (change)="idName($event)" name="idName" class="w-1/2 p-6">
+                        <option value="">Select Id</option>
+                        <option value="VOTERS ID">VOTERS ID</option>
+                        <option value="PAN CARD">PAN CARD</option>
+                        <option value="ADHAR">ADHAR</option>
+                        <option value="PASSPORT">PASSPORT</option>
+  
+                      </select>
+                    </div>
+                    <div class=" text-center mb-1" data-te-input-wrapper-init>
+  
+                      <input
+                        class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                        type="file" accept="image/*" name="files" (change)="onFileId($event)" id="formFileMultiple"
+                        multiple />
+                    </div>
+                    <!--Submit button-->
+                    <div>
+                    <button type="submit"
+                      class="bg-blue-500  text-gray-800  hover:bg-gray-700 p-2 m-1 rounded inline-block rounded  uppercase leading-normal text-white "
+                      data-te-ripple-init data-te-ripple-color="light">
+                      Submit
+                    </button>
+                    <button type="submit"
+                      class="bg-red-500  text-gray-800 m-1 hover:bg-gray-700 p-2 rounded inline-block rounded  uppercase leading-normal text-white "
+                      data-te-ripple-init (click)="uploadID()" data-te-ripple-color="light">
+                      Cancel
+                    </button>
+                  </div>
+                  </form>
+                </div>
+                <h3>LICENSE</h3><br>
+                <div class="p-2 flex flex-row justify-center" *ngIf="!userData.islicenceVerified&&userData.licencePhotos.length>0">
+                 
+                  <img alt="..."
+                  [src]="picUrl+userData.licencePhotos[userData.licencePhotos.length-1]"
+                  class="shadow-xl  h-36 w-40 align-middle border-none "
+                  style="max-width: 120px; " />
+                </div>
+                <div
+                  class="block rounded-lg mt-3 text-blue-600 mb-3 bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.07),0_10px_20px_-2px_rgba(0,0,0,0.04)] ">
+                  <div class="border-b-2 border-neutral-100 px-6 py-3  ">
+                    <button type="submit"
+                      class="bg-blue-500  text-gray-800  hover:bg-gray-700 p-2 mt-1 rounded inline-block rounded  uppercase leading-normal text-white "
+                      data-te-ripple-init (click)="addLicence()" data-te-ripple-color="light"
+                      *ngIf="userData.licencePhotos.length<1">
+                      ADD LICENSE
+                    </button>
+  
+                  </div>
+                  <div class="p-12 flex flex-row justify-center" *ngIf="userData.islicenceVerified">
+                    <h5 class="mb-2 m-2 text-xl font-medium leading-tight ">
+                      LICENSE ADDED & VERIFIED
+                    </h5>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                      class="bi bi-patch-check-fill mb-2 m-2" viewBox="0 0 16 16">
+                      <path
+                        d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z" />
+                    </svg>
+                  </div>
+                  <div class="p-6 flex flex-col items-center mb-2" *ngIf="licence">
+                    <form (ngSubmit)="onLicenseSubmit()" enctype="multipart/form-data">
+  
+                      <div class=" text-center mb-12 " data-te-input-wrapper-init>
+                        <input
+                          class="relative m-0 block w-full min-w-0 flex-auto rounded border border-solid border-neutral-300 bg-clip-padding px-3 py-[0.32rem] text-base font-normal text-neutral-700 transition duration-300 ease-in-out file:-mx-3 file:-my-[0.32rem] file:overflow-hidden file:rounded-none file:border-0 file:border-solid file:border-inherit file:bg-neutral-100 file:px-3 file:py-[0.32rem] file:text-neutral-700 file:transition file:duration-150 file:ease-in-out file:[border-inline-end-width:1px] file:[margin-inline-end:0.75rem] hover:file:bg-neutral-200 focus:border-primary focus:text-neutral-700 focus:shadow-te-primary focus:outline-none dark:border-neutral-600 dark:text-neutral-200 dark:file:bg-neutral-700 dark:file:text-neutral-100 dark:focus:border-primary"
+                          type="file" accept="image/*" name="files" (change)="onSelectedLicense($event)"
+                          id="formFileMultiple" multiple />
+                      </div>
+                      <!--Submit button-->
+                      <div>
+                        <button type="submit"
+                          class="bg-blue-500  text-gray-800  hover:bg-gray-700 p-2 m-1 rounded inline-block rounded  uppercase leading-normal text-white "
+                          data-te-ripple-init data-te-ripple-color="light">
+                          Submit
+                        </button>
+                        <button type="submit"
+                          class="bg-red-500  text-gray-800 m-1 hover:bg-gray-700 p-2  rounded inline-block rounded  uppercase leading-normal text-white "
+                          data-te-ripple-init (click)="addLicence()" data-te-ripple-color="light">
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>

@@ -12,6 +12,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { JwtInterceptor } from './interceptor/jwt.interceptor';
 import { HomeComponent } from './layouts/home/home.component';
 import { NavbarComponent } from './layouts/navbar/navbar.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatCardModule } from '@angular/material/card';
 
 
 @NgModule({
@@ -29,6 +31,8 @@ import { NavbarComponent } from './layouts/navbar/navbar.component';
     AppRoutingModule,
     ReactiveFormsModule,
     FormsModule,
+    MatDialogModule,
+    MatCardModule,
     HttpClientModule,
     ToastrModule.forRoot({
       timeOut: 10000,

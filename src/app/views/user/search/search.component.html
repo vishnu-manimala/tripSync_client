@@ -1,0 +1,115 @@
+<div class="block w-full  bg-white  ">
+    <div class="p-6 rounded-3xl shadow-xl">
+      <form class="flex flex-col md:flex-row justify-around" (submit)="search()">
+        <div class="relative mb-3 m-1 w-full md:w-1/4" data-te-input-wrapper-init>
+            <app-autocomplete
+        (placeChanged)="fromValue = $event"
+        placeholder="Enter from address..."
+      ></app-autocomplete>
+        </div>
+        <div class="relative mb-3 m-1 w-full  md:w-1/4" data-te-input-wrapper-init>
+  
+          <!-- <input type="text" id="toInput" name="destination" [(ngModel)]="toValue.address" required
+            class=" block min-h-[auto] w-full rounded-3xl border-0 bg-blue-50 px-3 py-[0.32rem]   placeholder:text-slate-600"
+            [placeholder]="destination" /> -->
+            <app-autocomplete
+            (placeChanged)="toValue = $event"
+            placeholder="Enter to address..."
+          ></app-autocomplete>
+        </div>
+        <div class="relative mb-3 m-1 w-full md:w-1/4" data-te-input-wrapper-init>
+  
+          <input type="date" name="date" [(ngModel)]="date"
+            class=" block min-h-[auto] w-full rounded-3xl border-0 bg-blue-50 px-3 py-[0.32rem]   placeholder:text-slate-600"
+            id="exampleFormControlInputText" />
+        </div>
+        <div class="relative mb-3 m-1 w-full md:w-1/4" data-te-input-wrapper-init>
+          <button type="submit" class="bg-blue-600    hover:bg-gray-700   rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            Search ride
+          </button>
+        </div>
+  
+      </form>
+    </div>
+  </div>
+  <div *ngIf="searchData">
+    <article class="bg-white hover:bg-gray-100 mt-3 transition duration-350 ease-in-out" *ngFor="let data of searchData">
+      <div class="flex flex-shrink-0 p-4 pb-0">
+        <a href="#" class="flex-shrink-0 group block">
+          <div class="flex items-center">
+            <div>
+              <img class="inline-block h-10 w-10 rounded-full"
+                [src]="picUrl+data.vehicleDetails.userDetails.profileImage[data.vehicleDetails.userDetails.profileImage.length-1]"
+                alt="" *ngIf="data.vehicleDetails.userDetails.profileImage">
+              <img class="inline-block h-10 w-10 rounded-full"
+                src="https://toppng.com/uploads/preview/cool-avatar-transparent-image-cool-boy-avatar-11562893383qsirclznyw.png"
+                alt="" *ngIf="!data.vehicleDetails.userDetails.profileImage">
+            </div>
+            <div class="ml-3">
+              <p class="text-base leading-6 font-medium text-blue-950"
+                (click)="navigator(data.vehicleDetails.userDetails._id)">
+                {{data.vehicleDetails.userDetails.name}}
+                <span
+                  class="text-sm leading-5 font-medium text-gray-400 group-hover:text-gray-300 transition ease-in-out duration-150">
+                  {{data.vehicleDetails.userDetails.email}}
+                </span>
+              </p>
+            </div>
+          </div>
+        </a>
+      </div>
+      <div
+        class="m-2 flex flex-row justify-between content-center block rounded-lg bg-white shadow-[0_2px_15px_-3px_rgba(0,0,0,0.09),0_10px_20px_-2px_rgba(0,0,0,0.04)]">
+        <div class=" overflow-hidden bg-cover bg-no-repeat w-40 h-40 text-center " data-te-ripple-init
+          data-te-ripple-color="light">
+          <img class="rounded-t-lg mt-2"
+            [src]="picUrl+data.vehicleDetails.VehiclePhotos[data.vehicleDetails.VehiclePhotos.length-1]" alt="" />
+        </div>
+        <div class="p-6">
+          <h5 class="mb-2 leading-tight text-neutral-800">
+            VEHICLE DETAILS:-
+          </h5>
+          <h6>{{data.vehicleDetails.brand}}</h6>
+          <h6>{{data.vehicleDetails.model}}</h6>
+  
+        </div>
+        <div class="p-6">
+          <h5 class="mb-2   leading-tight text-neutral-800">
+            RIDE DETAILS:-
+          </h5>
+  
+          <h6>{{data.origin| uppercase}} to {{data.destination| uppercase}}</h6>
+          <h6>Date: {{data.departure_date.split('T')[0]}}</h6>
+  
+        </div>
+        <div class="m-2 flex flex-col ">
+          <button type="submit" (click)="view(data._id)"
+            class="bg-blue-600 hover:bg-gray-700 mt-5  rounded-3xl pl-3 pr-3 pt-2 pb-2 text-white ">
+            view
+          </button>
+        </div>
+      </div>
+      <hr class="border-gray-800">
+    </article>
+    <nav class="mt-4" *ngIf="searchData.length>0">
+      <ul class="flex" *ngFor="let data of searchData; let i=index;">
+        <li>
+          <a class="mx-1 flex h-9 w-9 items-center justify-center rounded-full bg-gradient-to-tr from-pink-600 to-pink-400 p-0 text-sm text-white shadow-md shadow-pink-500/20 transition duration-150 ease-in-out"
+            href="#">
+            {{i+1}}
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div *ngIf="searchData.length<=0">
+    <article class="bg-white hover:bg-gray-100 mt-3 transition duration-350 ease-in-out">
+      <div class=" p-4 pb-0">
+  
+        <div>
+          <h1>No rides found!!!</h1>
+        </div>
+  
+      </div>
+    </article>
+  </div>

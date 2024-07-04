@@ -17,3 +17,9 @@ export type sendOtpResponse = {
     status: string;      
     message: string;       
   };
+
+  export interface ChatMessage{
+    user: string;
+    message: string;
+    _id:string 
+  }
